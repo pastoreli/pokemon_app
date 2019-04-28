@@ -1,0 +1,57 @@
+.pok{
+  &-tool-bar{
+
+    $border-color: rgba(#000, .1);
+    $border-width: 8px;
+
+
+    .v-toolbar__content{
+      position: relative;
+      padding: 0;
+      height: $header-size !important;
+      align-items: unset;
+      
+      .line-header{
+        position: absolute;
+        bottom: 0;
+      }
+
+      .header-content{
+        width: 100%;
+        height: calc(100% - 36px);
+        .items-{
+          &left{
+            height: 100%;
+            .round-icon{
+              display: block;
+              width: 25px;
+              height: 25px;
+              border-radius: 50%;
+
+              &.big-icon{
+                width: 60px;
+                height: 60px;
+                background: #CDE0E6;
+
+                &::after{
+                  content: '';
+                  position: relative;
+                  display: block;
+                  width: 45px;
+                  height: 45px;
+                  border-radius: 50%;
+                  background: $secundary-brand-color;
+                  margin: auto;
+                  transform: translateY(-50%);
+                  top: 50%;
+                  box-shadow: 0 14px 28px $shadow-color, 0 10px 10px $shadow-color;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

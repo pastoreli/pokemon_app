@@ -1,0 +1,16 @@
+.pok{
+  &-shadow{
+    &--none{
+      box-shadow: none !important;
+    }
+    &--1{
+      box-shadow: 0 14px 28px $shadow-color, 0 10px 10px $shadow-color;
+    }
+    &--2{
+      box-shadow: 0 3px 6px $shadow-color, 0 3px 6px $shadow-color;
+    }
+    &--3{
+      box-shadow: 0 10px 20px $shadow-color, 0 6px 6px $shadow-color;
+    }
+  }
+}

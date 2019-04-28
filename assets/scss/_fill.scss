@@ -1,0 +1,39 @@
+.pok-{
+  &primary-brand{
+    background-color: $primary-brand-color !important;
+    &--light{
+      background-color: $primary-brand-color-light !important;
+    }
+    &--dark{
+      background-color: $primary-brand-color-dark !important;
+    }
+  }
+  &secundary-brand{
+    background-color: $secundary-brand-color !important;
+    &--light{
+      background-color: $secundary-brand-color-light !important;
+    }
+    &--dark{
+      background-color: $secundary-brand-color-dark !important;
+    }
+  }
+  &third-brand{
+    background-color: $third-brand-color !important;
+    &--light{
+      background-color: $third-brand-color-light !important;
+    }
+    &--dark{
+      background-color: $third-brand-color-dark !important;
+    }
+  }
+
+  &success{
+    background-color: $success !important;
+  }
+  &alert{
+    background-color: $alert !important;
+  }
+  &danger{
+    background-color: $danger!important;
+  }
+}

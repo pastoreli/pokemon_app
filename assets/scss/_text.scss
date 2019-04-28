@@ -1,0 +1,29 @@
+.pok-{
+  &primary-brand-text{
+    color: $primary-brand-color !important;
+    &--light{
+      color: $primary-brand-color-light !important;
+    }
+    &--dark{
+      color: $primary-brand-color-dark !important;
+    }
+  }
+  &secundary-brand-text{
+    color: $secundary-brand-color !important;
+    &--light{
+      color: $secundary-brand-color-light !important;
+    }
+    &--dark{
+      color: $secundary-brand-color-dark !important;
+    }
+  }
+  &third-brand-text{
+    color: $third-brand-color !important;
+    &--light{
+      color: $third-brand-color-light !important;
+    }
+    &--dark{
+      color: $third-brand-color-dark !important;
+    }
+  }
+}
