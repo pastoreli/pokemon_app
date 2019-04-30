@@ -13,10 +13,34 @@
     padding: 0px !important;
     max-width: none !important;
   }
+  &fill--{
+    &height{
+      height: 100%;
+    }
+    &width{
+      width: 100%;
+    }
+    &all{
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
 .overflow-{
   &hidden{
     overflow: hidden !important;
   }
+}
+
+.bulba{
+  background: green;
+}
+
+.sqk{
+  background: blue;
+}
+
+.char{
+  background: red;
 }

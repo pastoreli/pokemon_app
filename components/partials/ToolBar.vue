@@ -1,6 +1,6 @@
 <template>
   <v-toolbar fixedapp class="pok-tool-bar pok-shadow--none transparent">
-    <img class="line-header" :src="require(`~/assets/images/header-line.svg`)" />
+    <img draggable="false" class="line-header" :src="require(`~/assets/images/header-line.svg`)" />
     
     <div class="header-content">
       <v-layout row wrap class="items-left">
