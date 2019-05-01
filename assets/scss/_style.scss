@@ -25,6 +25,10 @@
       width: 100%;
     }
   }
+
+  &round{
+    border-radius: $round;
+  }
 }
 
 .overflow-{

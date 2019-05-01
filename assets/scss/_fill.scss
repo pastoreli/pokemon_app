@@ -36,4 +36,14 @@
   &danger{
     background-color: $danger!important;
   }
+
+  &Grass{
+    background-color: $type-grass-color;
+  }
+  &Poison{
+    background-color: $type-poison-color;
+  }
+  &Fire{
+    background-color: $type-fire-color;
+  }
 }

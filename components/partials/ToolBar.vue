@@ -4,18 +4,18 @@
     
     <div class="header-content">
       <v-layout row wrap class="items-left">
-        <v-fex class="px-2">
+        <v-flex class="px-2">
           <span class="round-icon big-icon pok-shadow--1 center-item"></span>          
-        </v-fex>
-        <v-fex class="px-2">
+        </v-flex>
+        <v-flex class="px-2">
           <span class="round-icon pok-danger pok-shadow--1 center-item"></span>
-        </v-fex>
-        <v-fex class="px-2">
+        </v-flex>
+        <v-flex class="px-2">
           <span class="round-icon pok-alert pok-shadow--1 center-item"></span>
-        </v-fex>
-        <v-fex class="px-2">
+        </v-flex>
+        <v-flex class="px-2">
           <span class="round-icon pok-success pok-shadow--1 center-item"></span>
-        </v-fex>
+        </v-flex>
       </v-layout>
     </div>
         
