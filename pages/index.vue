@@ -1,9 +1,9 @@
 <template>
-  <v-layout row wrap  class="pok-fill--all">
-    <v-flex xs4 px-1>
+  <v-layout row wrap class="pok-fill--all">
+    <v-flex xs4 px-1 class="pok-fill--all">
       <pokemon-list />
     </v-flex>
-    <v-flex xs8 px-1>
+    <v-flex xs8 px-1 class="pok-fill--all">
       <pokemon-detail />
     </v-flex>
   </v-layout>
