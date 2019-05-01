@@ -59,17 +59,17 @@ export default {
   /*
   ** Build configuration
   */
-  build: {
-    vendor: [
-      '@fortawesome/fontawesome',
-      '@fortawesome/fontawesome-free-solid',
-      '@fortawesome/fontawesome-free-brands',
-      'slugify'
-    ],
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  }
+  // build: {
+  //   vendor: [
+  //     '@fortawesome/fontawesome',
+  //     '@fortawesome/fontawesome-free-solid',
+  //     '@fortawesome/fontawesome-free-brands',
+  //     'slugify'
+  //   ],
+  //   /*
+  //   ** You can extend webpack config here
+  //   */
+  //   extend(config, ctx) {
+  //   }
+  // }
 }
