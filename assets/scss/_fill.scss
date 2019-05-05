@@ -49,4 +49,7 @@
   &Flying{
     background-image: linear-gradient($type-flying-color-1 50%, $type-flying-color-2 50%);
   }
+  &Water{
+    background-color: $type-water-color; 
+  }
 }
