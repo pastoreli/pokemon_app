@@ -5,14 +5,27 @@ $secundary-brand-color: #66C7F7;
 $secundary-brand-color-light: lighten($secundary-brand-color, 10%);
 $secundary-brand-color-dark: darken($secundary-brand-color, 10%);
 $third-brand-color: #1A1A1A;
-$third-brand-color-light: lighten($third-brand-color, 10%);
-$third-brand-color-dark: darken($third-brand-color, 10%);
+$third-brand-color-light: #303030;
+$third-brand-color-dark: #1A1A1A;
 
 $success: #77D95A;
 $alert: #FEC91A;
 $danger: #F8604A;
 
+//pokemon type colors
+$type-grass-color: #9BCC50;
+$type-poison-color: #B97FC9;
+$type-fire-color: #FD7D24;
+
 $header-size: 120px;
 
 $shadow-color: rgba(0,0,0,0.15);
 $round: 10px;
+
+//text size
+$text-h1: 36px;
+$text-h2: 24px;
+$text-h3: 18px;
+$text-h4: 16px;
+$text-h5: 14px;
+$text-h6: 12px;

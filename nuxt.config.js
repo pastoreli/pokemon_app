@@ -50,22 +50,26 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+  },
 
   /*
   ** Build configuration
   */
-  build: {
-    vendor: [
-      '@fortawesome/fontawesome',
-      '@fortawesome/fontawesome-free-solid',
-      '@fortawesome/fontawesome-free-brands',
-      'slugify'
-    ],
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  }
+  // build: {
+  //   vendor: [
+  //     '@fortawesome/fontawesome',
+  //     '@fortawesome/fontawesome-free-solid',
+  //     '@fortawesome/fontawesome-free-brands',
+  //     'slugify'
+  //   ],
+  //   /*
+  //   ** You can extend webpack config here
+  //   */
+  //   extend(config, ctx) {
+  //   }
+  // }
 }

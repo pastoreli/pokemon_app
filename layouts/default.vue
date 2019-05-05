@@ -3,7 +3,9 @@
     <tool-bar />
     <v-content class="pa-4">
       <v-container class="pok-page px-0">
-        <nuxt />
+        <div class="pok-fill--all pa-4">
+          <nuxt />
+        </div>
       </v-container>
     </v-content>
   </v-app>

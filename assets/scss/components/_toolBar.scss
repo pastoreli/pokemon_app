@@ -14,6 +14,7 @@
       .line-header{
         position: absolute;
         bottom: 0;
+        user-select: none;
       }
 
       .header-content{
@@ -22,6 +23,7 @@
         .items-{
           &left{
             height: 100%;
+            width: 200px;
             .round-icon{
               display: block;
               width: 25px;
