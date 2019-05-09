@@ -21,6 +21,9 @@
     color: $third-brand-color !important;
     &--light{
       color: $third-brand-color-light !important;
+      &-2{
+        color: $third-brand-color-light-2;
+      }
     }
     &--dark{
       color: $third-brand-color-dark !important;
