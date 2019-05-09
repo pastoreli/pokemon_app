@@ -3,8 +3,8 @@ import axios from './axios';
 const route = '/pokemon';
 
 export default {
-  getAllPokemon: async  () => {
-    return axios.get(route)
+  getAllPokemon: async  (page = 1) => {
+    return axios.get(`${route}?page=${page}`)
     .then(res =>  res.data)
     .catch(error => {
       console.log('error', error);

@@ -43,6 +43,10 @@ export default {
     {
       src: '@/plugins/font-awesome-vue',
       ssr: false
+    },
+    {
+      src: '@/plugins/poke-filters',
+      ssr: false
     }
   ],
 

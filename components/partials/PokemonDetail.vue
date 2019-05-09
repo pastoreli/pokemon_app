@@ -12,14 +12,14 @@
             <label class="white--text font-weight-bold pok-text--h4">Tipo</label>
             <div class="pok-chip-container mb-4">
               <div v-for="(type, index) in pokemon.types" :key="index" :class="['pok-chip', 'ma-1', `pok-${type.name}`]">
-                <span class="white--text pok-text--h6">{{type.name}}</span>
+                <span class="white--text pok-text--h6">{{type.name | convertTypeLanguage}}</span>
               </div>
             </div>
             <div class="pt-2">
               <label class="white--text font-weight-bold pok-text--h4">Habilidades</label>
               <div class="mt-2">
-                <div v-for="(move, index) in moves" :key="index" class="mb-1">
-                  <span class="white--text pok-text--h4">{{move}}</span>
+                <div v-for="abilitie in abilities" :key="abilitie.id" class="mb-1">
+                  <span class="white--text pok-text--h4">{{abilitie.name}}</span>
                 </div>
               </div>
             </div>
@@ -29,10 +29,17 @@
           <v-layout row wrap>
             <template v-for="(stat, index) in stats">
               <v-flex xs4 :key="index">
-
+                <span class="white--text pok-text--h4">{{stat.name}}</span>
               </v-flex>
               <v-flex xs8 :key="`${index}.${index+1}`" >
-
+                <v-layout row wrap pa-0>
+                  <v-flex xs4 md2 py-1>
+                    <span class="white--text pok-text--h4">{{stat.value}}</span>
+                  </v-flex>
+                  <v-flex xs8 md10 pr-4 py-0>
+                    <v-progress-linear :value="((stat.value/500)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                  </v-flex>
+                </v-layout>
               </v-flex>
             </template>
           </v-layout>
@@ -52,9 +59,15 @@ export default {
   },
   data (){
     return {
-      moves: [
-        'Chlorophyll',
-        'Overgrow'
+      abilities: [
+        {
+          id: 1,
+          name: 'Chlorophyll'
+        },
+        {
+          id: 2,
+          name: 'Overgrow'
+        }
       ],
       stats: [
         {

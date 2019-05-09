@@ -1,0 +1,13 @@
+.pok-{
+  &linear-progress{
+    .v-progress-linear__background{
+      border-radius: $round !important;
+    }
+    .v-progress-linear__bar{
+        div{
+        border-radius: $round !important;
+        overflow: hidden;
+      }
+    }
+  }
+}

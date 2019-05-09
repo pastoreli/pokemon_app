@@ -4,7 +4,7 @@
       <pokemon-list :items="pokemonList" @choosePokemon="searchPokemon" />
     </v-flex>
     <v-flex xs8 px-1 class="pok-fill--all">
-      <pokemon-detail :pokemon="choosedPokemon" />
+      <pokemon-detail :pokemon="choosedPokemon || {}" />
     </v-flex>
   </v-layout>
 </template>
@@ -22,7 +22,7 @@ export default {
     PokemonDetail
   },
   async mounted() {
-    this.pokemonList = await PokemonAPI.getAllPokemon();
+    await this.getListPokemon(1)
   },
   data() {
     return {
@@ -31,6 +31,15 @@ export default {
     }
   },
   methods: {
+    async getListPokemon(page = 1){
+      await PokemonAPI.getAllPokemon(page)
+      .then(res => {
+        this.pokemonList.push(...res);
+        if(page <= 38) {
+          this.getListPokemon(page+1);
+        }
+      }).catch(error => console.log('error', error));
+    },
     async searchPokemon(id) {
       this.choosedPokemon = await PokemonAPI.getPokemonById(id);
     }

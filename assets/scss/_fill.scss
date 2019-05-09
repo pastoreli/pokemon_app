@@ -52,4 +52,44 @@
   &Water{
     background-color: $type-water-color; 
   }
-}
+  &Bug{
+    background-color: $type-bug-color;
+  }
+  &Normal{
+    background-color: $type-normal-color;
+  }
+  &Electric{
+    background-color: $type-electric-color;
+  }
+  &Ground{
+    background-image: linear-gradient($type-ground-color-1 50%, $type-ground-color-2 50%);
+  }
+  &Fairy{
+    background-color: $type-fairy-color;
+  }
+  
+  &Ghost{
+    background-color: $type-ghost-color;
+  }
+  &Psychic{
+    background-color: $type-psychic-color;
+  }
+  &Rock{
+    background-color: $type-rock-color;
+  }
+  &Dark{
+    background-color: $type-dark-color;
+  }
+  &Dragon{
+    background-image: linear-gradient($type-dragon-color-1 50%, $type-dragon-color-2 50%);
+  }
+  &Ice{
+    background-color: $type-ice-color;
+  }
+  &Steel{
+    background-color: $type-steel-color;
+  }
+  &Fighting{
+    background-color: $type-fighting-color;
+  }
+} 
