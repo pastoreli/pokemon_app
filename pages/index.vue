@@ -4,7 +4,7 @@
       <pokemon-list :items="pokemonList" @choosePokemon="searchPokemon" />
     </v-flex>
     <v-flex xs8 px-1 class="pok-fill--all">
-      <pokemon-detail :pokemon="choosedPokemon || {}" />
+      <pokemon-detail :pokemon="choosedPokemon || null" />
     </v-flex>
   </v-layout>
 </template>

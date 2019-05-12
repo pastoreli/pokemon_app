@@ -5,43 +5,119 @@
         <v-flex xs4 class="text-center">
           <img :src="pokemon.sprite" class="pok-img--sz2" />
           <p class="white--text pok-text--h1 ma-0">{{pokemon.name}}</p>
-          <span class="pok-third-brand-text--light-2">#{{pokemon.pokedex_id}}</span>
+          <span class="pok-third-brand-text--light-2">{{pokemon.pokedex_id | convertPokedexId}}</span>
         </v-flex>
         <v-flex xs2>
           <div>
-            <label class="white--text font-weight-bold pok-text--h4">Tipo</label>
-            <div class="pok-chip-container mb-4">
+            <label class="white--text font-weight-bold pok-text--h4">Type</label>
+            <div class="pok-chip-container mb-4 mt-2">
               <div v-for="(type, index) in pokemon.types" :key="index" :class="['pok-chip', 'ma-1', `pok-${type.name}`]">
                 <span class="white--text pok-text--h6">{{type.name}}</span>
               </div>
             </div>
             <div class="pt-2">
-              <label class="white--text font-weight-bold pok-text--h4">Habilidades</label>
+              <label class="white--text font-weight-bold pok-text--h4">Abilities</label>
               <div class="mt-2">
-                <div v-for="abilitie in abilities" :key="abilitie.id" class="mb-1">
-                  <span class="white--text pok-text--h4">{{abilitie.name}}</span>
+                <div v-for="ability in pokemon.abilities" :key="ability.id" class="mb-1">
+                  <v-tooltip top max-width="250px" content-class="text-center">
+                    <template v-slot:activator="{ on }">
+                      <span v-on="on" @mouseover="callAbilityDetails(ability.id)" class="white--text pok-text--h4">{{ability.name}}</span>
+                    </template>
+                    <span v-if="showAbilityDetails">{{showAbilityDetails.description}}</span>
+                  </v-tooltip>
                 </div>
               </div>
             </div>
           </div>
         </v-flex>
         <v-flex xs6>
-          <v-layout row wrap>
-            <template v-for="(stat, index) in stats">
-              <v-flex xs4 :key="index">
-                <span class="white--text pok-text--h4">{{stat.name}}</span>
-              </v-flex>
-              <v-flex xs8 :key="`${index}.${index+1}`" >
-                <v-layout row wrap pa-0>
-                  <v-flex xs4 md2 py-1>
-                    <span class="white--text pok-text--h4">{{stat.value}}</span>
-                  </v-flex>
-                  <v-flex xs8 md10 pr-4 py-0>
-                    <v-progress-linear :value="((stat.value/500)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
-                  </v-flex>
-                </v-layout>
-              </v-flex>
-            </template>
+          <v-layout row wrap>  
+            
+            <v-flex xs4>
+              <span class="white--text pok-text--h4">HP</span>
+            </v-flex>
+            <v-flex xs8>
+              <v-layout row wrap pa-0>
+                <v-flex xs4 md2 py-1>
+                  <span class="white--text pok-text--h4">{{pokemon.stats.hp}}</span>
+                </v-flex>
+                <v-flex xs8 md10 pr-4 py-0>
+                  <v-progress-linear :value="((pokemon.stats.hp/statsPercent)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs4>
+              <span class="white--text pok-text--h4">Attack</span>
+            </v-flex>
+            <v-flex xs8>
+              <v-layout row wrap pa-0>
+                <v-flex xs4 md2 py-1>
+                  <span class="white--text pok-text--h4">{{pokemon.stats.atk}}</span>
+                </v-flex>
+                <v-flex xs8 md10 pr-4 py-0>
+                  <v-progress-linear :value="((pokemon.stats.atk/statsPercent)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs4>
+              <span class="white--text pok-text--h4">Defense</span>
+            </v-flex>
+            <v-flex xs8>
+              <v-layout row wrap pa-0>
+                <v-flex xs4 md2 py-1>
+                  <span class="white--text pok-text--h4">{{pokemon.stats.def}}</span>
+                </v-flex>
+                <v-flex xs8 md10 pr-4 py-0>
+                  <v-progress-linear :value="((pokemon.stats.def/statsPercent)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs4>
+              <span class="white--text pok-text--h4">Special Attack</span>
+            </v-flex>
+            <v-flex xs8>
+              <v-layout row wrap pa-0>
+                <v-flex xs4 md2 py-1>
+                  <span class="white--text pok-text--h4">{{pokemon.stats.sp_atk}}</span>
+                </v-flex>
+                <v-flex xs8 md10 pr-4 py-0>
+                  <v-progress-linear :value="((pokemon.stats.sp_atk/statsPercent)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs4>
+              <span class="white--text pok-text--h4">Special Defense</span>
+            </v-flex>
+            <v-flex xs8>
+              <v-layout row wrap pa-0>
+                <v-flex xs4 md2 py-1>
+                  <span class="white--text pok-text--h4">{{pokemon.stats.sp_def}}</span>
+                </v-flex>
+                <v-flex xs8 md10 pr-4 py-0>
+                  <v-progress-linear :value="((pokemon.stats.sp_def/statsPercent)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs4>
+              <span class="white--text pok-text--h4">Speed</span>
+            </v-flex>
+            <v-flex xs8>
+              <v-layout row wrap pa-0>
+                <v-flex xs4 md2 py-1>
+                  <span class="white--text pok-text--h4">{{pokemon.stats.speed}}</span>
+                </v-flex>
+                <v-flex xs8 md10 pr-4 py-0>
+                  <v-progress-linear :value="((pokemon.stats.speed/statsPercent)*100)" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+
           </v-layout>
         </v-flex>
       </v-layout>
@@ -49,52 +125,25 @@
   </div>
 </template>
 <script>
+
+import abilityAPI from '@/API/ability';
+
 export default {
   props: {
     pokemon: {
       required: true,
-      type: Object,
       default: null
     }
   },
   data (){
     return {
-      abilities: [
-        {
-          id: 1,
-          name: 'Chlorophyll'
-        },
-        {
-          id: 2,
-          name: 'Overgrow'
-        }
-      ],
-      stats: [
-        {
-          name: 'HP',
-          value: 250
-        },
-        {
-          name: 'Attack',
-          value: 250
-        },
-        {
-          name: 'Defence',
-          value: 250
-        },
-        {
-          name: 'Special Atack',
-          value: 250
-        },
-        {
-          name: 'Special Defence',
-          value: 250
-        },
-        {
-          name: 'Speed',
-          value: 250
-        }
-      ]
+      statsPercent: 200,
+      showAbilityDetails: null
+    }
+  },
+  methods: {
+    async callAbilityDetails(id) {
+      this.showAbilityDetails = await abilityAPI.getAbilityById(id);
     }
   }
 }
