@@ -34,7 +34,7 @@ export default {
     async getListPokemon(page = 1){
       await PokemonAPI.getAllPokemon(page)
       .then(res => {
-        this.pokemonList.push(...res);
+        this.pokemonList.push(...res.content);
         if(page <= 38) {
           this.getListPokemon(page+1);
         }

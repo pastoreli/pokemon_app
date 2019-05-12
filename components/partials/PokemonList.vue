@@ -11,7 +11,7 @@
             <p class="white--text font-weight-bold mx-0 my-2 pok-text--h3"><span class="font-weight-regular pok-text--h4">#{{pokemon.pokedex_id}}</span> {{pokemon.name}}</p>
             <span class="pok-chip-container">
               <span v-for="(type, index) in pokemon.types" :key="index" :class="['pok-chip', 'mx-1', `pok-${type.name}`]">
-                <span class="white--text pok-text--h6">{{type.name | convertTypeLanguage}}</span>
+                <span class="white--text pok-text--h6">{{type.name}}</span>
               </span>
             </span>
           </v-list-tile-content>
