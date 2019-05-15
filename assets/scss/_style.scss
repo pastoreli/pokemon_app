@@ -43,6 +43,9 @@
 
 .text-center{
   text-align: center !important;
+  &-vertical{
+    vertical-align: middle;
+  }
 }
 
 .bulba{

@@ -12,7 +12,7 @@
             <label class="white--text font-weight-bold pok-text--h4">Type</label>
             <div class="pok-chip-container mb-4 mt-2">
               <div v-for="(type, index) in pokemon.types" :key="index" :class="['pok-chip', 'ma-1', `pok-${type.name}`]">
-                <span class="white--text pok-text--h6">{{type.name}}</span>
+                <span class="white--text pok-text--h6 text-center-vertical">{{type.name}}</span>
               </div>
             </div>
             <div class="pt-2">
@@ -21,7 +21,7 @@
                 <div v-for="ability in pokemon.abilities" :key="ability.id" class="mb-1">
                   <v-tooltip top max-width="250px" content-class="text-center">
                     <template v-slot:activator="{ on }">
-                      <span v-on="on" @mouseover="callAbilityDetails(ability.id)" class="white--text pok-text--h4">{{ability.name}}</span>
+                      <span v-on="on" @mouseover="callAbilityDetails(ability.id)" @mouseleave="showAbilityDetails = null" class="white--text pok-text--h4">{{ability.name}}</span>
                     </template>
                     <span v-if="showAbilityDetails">{{showAbilityDetails.description}}</span>
                   </v-tooltip>
