@@ -1,0 +1,25 @@
+.v-btn{
+  .v-btn__content{
+    display: inline;
+    vertical-align: middle; 
+  }
+  &.min-width{
+    .v-btn__content{
+      min-width: 100px !important;
+    }
+
+    &--x2{
+      min-width: 150px !important;
+    }
+  }
+  &.transparent{
+    background: transparent !important;
+    box-shadow: none !important;
+    .v-btn__content{
+      background: transparent !important;
+    }
+    &::before{
+      background: transparent !important;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <template>
   <div class="pok-third-brand pok-fill--all pa-4">
     <div v-if="pokemon">
-      <v-layout row wrap class="pok-third-brand--light pok-round py-4">
+      <v-layout row wrap class="pok-third-brand--light pok-round-2 py-4">
         <v-flex xs4 class="text-center">
           <img :src="pokemon.sprite" class="pok-img--sz2" />
           <p class="white--text pok-text--h1 ma-0">{{pokemon.name}}</p>

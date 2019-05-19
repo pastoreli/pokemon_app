@@ -6,7 +6,7 @@
 
 .pok-{
   &page{
-    border-radius: $round;
+    border-radius: $round-2;
     background: #E6E6E6;
     width: 100% !important;
     height: calc(100vh - (#{$header-size} + 50px)) !important;
@@ -27,7 +27,14 @@
   }
 
   &round{
-    border-radius: $round;
+    border-radius: $round !important;
+    &-2{
+      border-radius: $round-2 !important;
+    }
+    &-3{
+      
+      border-radius: $round-3 !important;
+    }
   }
 }
 
@@ -41,21 +48,22 @@
   }
 }
 
-.text-center{
-  text-align: center !important;
-  &-vertical{
-    vertical-align: middle;
+.text-{
+  &center{
+    text-align: center !important;
+    &-vertical{
+      vertical-align: middle;
+      &--force{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
   }
-}
-
-.bulba{
-  background: green;
-}
-
-.sqk{
-  background: blue;
-}
-
-.char{
-  background: red;
+  &right{
+    text-align: right !important;
+  }
+  &left{
+    text-align: left !important;
+  }
 }
