@@ -8,7 +8,7 @@
             <div class="form-login-icon-img"></div>
           </div>
           <div class="form-login-content">
-            <sign-in></sign-in>
+            <sign-in @signIn="signIn"></sign-in>
           </div>
 
         </div>
@@ -19,6 +19,10 @@
 
 <script>
 
+//API
+import Auth from '@/API/auth';
+
+//components
 import SignIn from './forms/SignIn';
 
 export default {
@@ -40,6 +44,13 @@ export default {
   methods: {
     close() {
       this.$emit('close')
+    },
+    signIn( data ) {
+      if( Auth.signIn( data ) ) {
+
+      }else{
+
+      }
     }
   }
 }
