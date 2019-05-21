@@ -4,8 +4,12 @@ const route = '/auth';
 export default {
   signIn: async (data) => {
     console.log(JSON.stringify(data))
-    return axios.get(route, JSON.stringify(data)).
-    then( res => {
+    return axios.post(route, JSON.stringify(data), {
+        headers: {
+          'Content-Type': 'Application/Json'
+        }
+      })
+      .then( res => {
       console.log('login', res)
       return true;
     }).catch( err => {
