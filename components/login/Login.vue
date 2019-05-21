@@ -3,12 +3,19 @@
     <div class="pok-dialog-content pok-primary-brand pok-round-3">
       <a class="fas fa-times white--text pok-text--h2 btn-close" @click="close()"></a>
       <div class="form-login">
-        <div class="form-login-wrapper white pok-round-3">
+        <div :class="['form-login-wrapper white pok-round-3', page]">
           <div class="form-login-icon pok-shadow--1">
             <div class="form-login-icon-img"></div>
           </div>
           <div class="form-login-content">
-            <sign-in @signIn="signIn"></sign-in>
+            <sign-up 
+              v-if="page === 'signup'" 
+              @signIn="signUp" 
+              @changePage="changePage"></sign-up>
+            <sign-in 
+              v-else 
+              @signUp="signIn" 
+              @changePage="changePage"></sign-in>
           </div>
 
         </div>
@@ -24,10 +31,12 @@ import Auth from '@/API/auth';
 
 //components
 import SignIn from './forms/SignIn';
+import SignUp from './forms/SignUp';
 
 export default {
   components: {
-    SignIn
+    SignIn,
+    SignUp
   },
   props: {
     show: {
@@ -51,6 +60,16 @@ export default {
       }else{
 
       }
+    },
+    signUp( data ) {
+      if( Auth.signIn( data ) ) {
+
+      }else{
+
+      }
+    },
+    changePage( data ) {
+      this.$emit('changePage', data)
     }
   }
 }

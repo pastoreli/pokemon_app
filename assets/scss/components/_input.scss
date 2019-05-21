@@ -10,6 +10,7 @@
       // border: 2px solid transparent !important;
       border-radius: $round;
       .v-text-field__slot{
+        height: 10px !important;
         label{
           color: $input-text-color !important;
         }
@@ -34,6 +35,25 @@
         &::after,
         &::before{
           display: none;
+        }
+      }
+    }
+
+    &.mini{
+      height: 40px !important;
+      .v-input__control{
+        height: 40px !important;
+        .v-input__slot{
+          height: 40px !important;
+          min-height: 0px !important;
+          label{
+            position: relative;
+            top: 10px;
+          }
+          input{
+            position: relative;
+            top: -2px;
+          }
         }
       }
     }

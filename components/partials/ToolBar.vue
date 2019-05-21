@@ -29,6 +29,12 @@ export default {
   methods: {
     callLogin(page) {
       this.$nuxt.$emit('showLogin', {show: true, page: page});
+      this.teste
+    }
+  },
+  data () {
+    return {
+      teste: ''
     }
   }
 }

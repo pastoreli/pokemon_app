@@ -1,6 +1,10 @@
 <template>
   <v-app class="pok-primary-brand overflow-hidden">
-    <login :show="loginProps.show" :page="loginProps.page" @close="loginProps.show = false" />
+    <login 
+      :show="loginProps.show" 
+      :page="loginProps.page" 
+      @close="loginProps.show = false"
+      @changePage="data => loginProps.page = data" />
     <tool-bar />
     <v-content class="pa-4">
       <v-container class="pok-page px-0">

@@ -9,9 +9,15 @@
     .form-login-wrapper{
       position: relative;
       width: 500px;
-      height: 380px;
+      min-height: 380px;
+      max-height: 430px;
       margin: auto;
-      top: calc(#{$icon-size}/2 + 30px);
+      top: calc(#{$icon-size}/2 + 20px);
+
+      &.signin{
+        max-height: 380px;
+        top: calc(#{$icon-size}/2 + 40px);
+      }
 
       .form-login-icon{
         position: relative;
@@ -38,6 +44,7 @@
       .form-login-content{
         position: relative;
         transform: translateY(calc(-#{$icon-size}/2));
+        top: -15px;
       }
     }
   }

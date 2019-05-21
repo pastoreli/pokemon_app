@@ -49,5 +49,9 @@
     &h6{
       font-size: $text-h6 !important;
     }
+
+    &underline{
+      text-decoration: underline !important;
+    }
   }
 }
