@@ -67,3 +67,9 @@
     text-align: left !important;
   }
 }
+
+.cursor-{
+  &pointer{
+    cursor: pointer;
+  }
+}

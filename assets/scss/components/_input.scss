@@ -57,6 +57,29 @@
         }
       }
     }
+  
+    &.opt--{
+      &dark{
+        .v-input__slot{
+          border: solid 1px #fff;
+          background: rgba(255, 255, 255, 0.34) !important;
+          label,
+          input{
+            color: #fff !important;
+          }
+        }
+
+        &.v-input--is-focused{
+          .v-input__slot{
+            label,
+            input{
+              color: #fff !important;
+            }
+          }
+        }
+      }
+    }
+
   }
 
   &text-search{

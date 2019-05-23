@@ -11,8 +11,8 @@
           <span class="round-icon pok-success pok-shadow--1 mx-1"></span>
         </v-flex>
         <v-flex xs6 class="text-center">
-          <v-btn color="pok-third-brand white--text" class="pok-round-2 min-width my-4">Pokedex</v-btn>
-          <v-btn color="pok-third-brand white--text" class="pok-round-2 min-width my-4">Teams</v-btn>
+          <v-btn color="pok-third-brand white--text" class="pok-round-2 min-width my-4" to="/">Pokedex</v-btn>
+          <v-btn color="pok-third-brand white--text" class="pok-round-2 min-width my-4" to="/team">Teams</v-btn>
         </v-flex>
         <v-flex xs3 class="text-right">
           <v-btn color="white--text" class="my-4 mx-0 transparent" @click="callLogin('signin')">Sign IN</v-btn>

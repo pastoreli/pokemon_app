@@ -5,7 +5,7 @@
         <v-flex xs4 class="text-center">
           <img :src="pokemon.sprite" class="pok-img--sz2" />
           <p class="white--text pok-text--h1 ma-0">{{pokemon.name}}</p>
-          <span class="pok-third-brand-text--light-2">{{pokemon.pokedex_id | convertPokedexId}}</span>
+          <span class="pok-third-brand-text--light-3">{{pokemon.pokedex_id | convertPokedexId}}</span>
         </v-flex>
         <v-flex xs2>
           <div>

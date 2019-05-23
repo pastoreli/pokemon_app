@@ -1,11 +1,11 @@
 <template>
-  <div class="pok-fill--all">
+  <div class="pok-fill--all pok-team">
     <v-layout row wrap class="pok-fill--all">
       <v-flex xs4 px-1 class="pok-fill--all">
         <team-list />
       </v-flex>
       <v-flex xs8 px-1 class="pok-fill--all">
-        <team-profile />
+        <team-profile :items="pokemonList" />
       </v-flex>
     </v-layout>
   </div>
@@ -18,7 +18,7 @@ import PokemonAPI from '@/API/pokemon';
 
 //components
 import TeamList from '@/components/team/TeamList';
-import TeamProfile from '@/components/team/TeamProfile';
+import TeamProfile from '@/components/team/profile';
 
 export default {
   components: {
