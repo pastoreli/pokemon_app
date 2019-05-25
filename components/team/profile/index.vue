@@ -1,6 +1,5 @@
 <template>
   <div class="pok-third-brand pok-fill--all pa-4">
-    <label class="white--text">{{choosedPokemonList.length}}</label>
     <v-layout row wrap>
       <v-flex xs4>
         <v-text-field
@@ -15,11 +14,11 @@
         <span class="white--text mx-2 pok-text--h4"><i class="fas fa-save mr-1" />SAVE</span>
       </v-flex>
     </v-layout>
-    <!-- {{choosedPokemoList}} -->
 
     <v-container class="pok-third-brand--light-2 pok-round overflow-hidden pok-team-container pa-0">
-      <profile-tab :pokemonList="choosedPokemonList" />
-      <pokemon-list :items="pokemonList" @choosePokemon="searchPokemon" />
+      <profile-tab :pokemonList="choosedPokemonList" @changeTab="changeTab" />
+      <pokemon-form v-if="choosedPokemonList[tabIndex]" :pokemon="choosedPokemonList[tabIndex]" />
+      <pokemon-list v-else :items="pokemonList" @choosePokemon="searchPokemon" />
     </v-container>
 
   </div>
@@ -33,11 +32,13 @@ import PokemonAPI from '@/API/pokemon';
 //components
 import ProfileTab from './ProfileTab'
 import PokemonList from './PokemonList'
+import PokemonForm from './PokemonForm'
 
 export default {
   components: {
     ProfileTab,
-    PokemonList
+    PokemonList,
+    PokemonForm
   },
   props: {
     items: {
@@ -59,6 +60,9 @@ export default {
     async searchPokemon(id) {
       this.$set(this.choosedPokemonList, this.tabIndex, await PokemonAPI.getPokemonById(id))
       // this.choosedPokemonList[this.tabIndex] = await PokemonAPI.getPokemonById(id);
+    },
+    changeTab(index) {
+      this.tabIndex = index
     }
   },
 }

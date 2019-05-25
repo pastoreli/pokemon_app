@@ -1,6 +1,10 @@
 <template>
   <div class="pok-third-brand pok-fill--all overflow-auto">
-    <v-text-field hide-details append-icon="fas fa-search" class="pok-input-text-search pa-0 ma-0" />
+    <v-text-field 
+      hide-details 
+      placeholder="Search Team"
+      append-icon="fas fa-search" 
+      class="pok-input-text-search pa-0 ma-0" />
     <div>
       <v-list two-line class="transparent pa-0">
         <v-list-tile class="pb-3 bt-2 mb-1">

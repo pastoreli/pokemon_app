@@ -73,3 +73,16 @@
     cursor: pointer;
   }
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #E6E6E6 !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #E6E6E6 !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #E6E6E6 !important;
+}

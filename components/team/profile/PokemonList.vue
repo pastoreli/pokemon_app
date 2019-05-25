@@ -1,5 +1,15 @@
 <template>
-  <v-container class="pok-third-brand--light pa-2 pok-fill--all">
+  <v-container class="pok-third-brand--light pa-2 pok-team-content">
+    <v-layout row wrap>
+      <v-flex xs7 offset-xs5 offset-md2 offset-lg5>
+        <v-text-field 
+          hide-details
+          placeholder="Search Pokemon" 
+          append-icon="fas fa-search" 
+          class="pok-input-text-search pa-0 ma-0"
+          @input="search" />
+      </v-flex>
+    </v-layout>
     <v-layout row wrap pt-2 pb-4>
       <v-flex xs2 text-xs-center>
         <label class="white--text pok-text--h3 font-weight-black">Sort by</label>
@@ -20,7 +30,7 @@
         <label class="white--text pok-text--h3 px-1 font-weight-bold">BST</label>
       </v-flex>
     </v-layout>
-    <v-container class="pok-fill--all overflow-auto pa-0">
+    <v-container class="overflow-auto pa-0" style="height: calc(100% - 130px)">
       <div 
         v-for="pokemon in pokemonList" 
         :key="pokemon.id"
@@ -30,7 +40,7 @@
           wrap
           class="cursor-pointer">
           <v-flex xs2 text-xs-center>
-            <img :src="pokemon.sprite" class="pok-img--sz3" />
+            <img :src="pokemon.sprite" class="pok-img--sz4" style="position: relative; top: -12px" />
           </v-flex>
           <v-flex xs2>
             <label class="white--text pok-text--h4 font-weight-bold">
@@ -79,6 +89,12 @@ export default {
     choosedPokemon(id){
       this.$emit('choosePokemon', id);
     },
+    search(val) {
+      if(val.length > 2)
+        this.pokemonList = this.items.filter(pok => pok.name.toLowerCase().includes(val.toLowerCase()));
+      else if(val.length == 2)
+        this.pokemonList = this.items;
+    }
   }
 }
 </script>
