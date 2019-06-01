@@ -3,7 +3,7 @@
     <h2 class="mb-4">Sign In</h2>
     <v-text-field 
       v-model="form.username" 
-      class="pok-input-text mb-2" 
+      class="pok-input mb-2" 
       name="username" 
       label="Username" 
       type="email" 
@@ -11,7 +11,7 @@
       hide-details />
     <v-text-field 
       v-model="form.password" 
-      class="pok-input-text mb-2" 
+      class="pok-input mb-2" 
       name="password" 
       label="Password" 
       type="password" 

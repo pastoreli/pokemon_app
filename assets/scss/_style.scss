@@ -86,3 +86,17 @@
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #E6E6E6 !important;
 }
+
+[role=list] {
+  padding: 0px !important;
+  background: $third-brand-color-light !important;
+  color: white !important;
+  [role=listitem] {
+    .v-list__tile{
+      padding: 0px !important;
+      .v-list__tile__content{
+        padding: 0 10px;
+      }
+    }
+  }
+}

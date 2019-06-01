@@ -1,16 +1,31 @@
-.pok-input-{
+.pok-input{
   $input-color: #E3E1E1;
   $input-text-color: rgba(#000, 0.5);
   $input-search-color: #686868;
   $input-search-text-color: #fff;
   
-  &text{
+  .v-input__slot{
+    background-color: $input-color !important;
+    // border: 2px solid transparent !important;
+    border-radius: $round !important;
+    .v-text-field__slot{
+      height: 10px !important;
+      label{
+        color: $input-text-color !important;
+      }
+    }
+
+    &::after,
+    &::before{
+      display: none;
+    }
+  }
+
+  &.v-input--is-focused{
     .v-input__slot{
-      background-color: $input-color !important;
-      // border: 2px solid transparent !important;
-      border-radius: $round !important;
+      // border-color: $secundary-brand-color !important;
+
       .v-text-field__slot{
-        height: 10px !important;
         label{
           color: $input-text-color !important;
         }
@@ -21,78 +36,87 @@
         display: none;
       }
     }
+  }
 
-    &.v-input--is-focused{
-      .v-input__slot{
-        // border-color: $secundary-brand-color !important;
-
-        .v-text-field__slot{
-          label{
-            color: $input-text-color !important;
-          }
-        }
-
-        &::after,
-        &::before{
-          display: none;
-        }
-      }
-    }
-
-    &.mini{
+  &.mini{
+    height: 40px !important;
+    .v-input__control{
       height: 40px !important;
-      .v-input__control{
+      .v-input__slot{
         height: 40px !important;
-        .v-input__slot{
-          height: 40px !important;
-          min-height: 0px !important;
-          label{
-            position: relative;
-            top: 10px;
-          }
-          input{
-            position: relative;
-            top: -2px;
-          }
+        min-height: 0px !important;
+        label{
+          position: relative;
+          top: 10px;
+        }
+        input{
+          position: relative;
+          top: -2px;
         }
       }
     }
+  }
 
-    &.no-label{
-      .v-input__control{
-        .v-input__slot{
-          input{
-            top: -11px !important;
-          }
+  &.no-label{
+    .v-input__control{
+      .v-input__slot{
+        input{
+          top: -11px !important;
         }
       }
     }
-  
-    &.opt--{
-      &dark{
+  }
+
+  &.opt--{
+    &dark{
+      .v-input__slot{
+        border: solid 1px #fff;
+        background: rgba(255, 255, 255, 0.34) !important;
+        label,
+        input{
+          color: #fff !important;
+        }
+      }
+
+      &.v-input--is-focused{
         .v-input__slot{
-          border: solid 1px #fff;
-          background: rgba(255, 255, 255, 0.34) !important;
           label,
           input{
             color: #fff !important;
           }
         }
+      }
+    }
+  }
 
-        &.v-input--is-focused{
+  &.pok-input-{
+    &select{
+      &.mini{
+        .v-input__control{
           .v-input__slot{
-            label,
-            input{
-              color: #fff !important;
+            .v-select__slot{
+
+              .v-select__selections{
+                padding: 0;
+              }
+              
+              input{
+                position: relative;
+                top: 0px !important;
+              }
+
+              .v-input__icon{
+                position: relative;
+                top: -10px !important;
+              }
             }
           }
         }
       }
     }
-
   }
 
-  &text-search{
+  &-search{
     width: 100%;
     height: 61px;
     .v-input__slot{

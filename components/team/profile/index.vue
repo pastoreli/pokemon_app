@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs4>
         <v-text-field
-          class="pok-input-text opt--dark mini mb-2" 
+          class="pok-input opt--dark mini mb-2" 
           name="password" 
           label="Team Name"
           box 
@@ -17,7 +17,7 @@
 
     <v-container class="pok-third-brand--light-2 pok-round overflow-hidden pok-team-container pa-0">
       <profile-tab :pokemonList="choosedPokemonList" @changeTab="changeTab" />
-      <pokemon-form v-if="choosedPokemonList[tabIndex]" :pokemon="choosedPokemonList[tabIndex]" />
+      <pokemon-form v-if="choosedPokemonList[tabIndex]" :pokemon="choosedPokemonList[tabIndex]" :items="itemsList" />
       <pokemon-list v-else :items="pokemonList" @choosePokemon="searchPokemon" />
     </v-container>
 
@@ -27,7 +27,8 @@
 <script>
 
 //API
-import PokemonAPI from '@/API/pokemon';
+import PokemonAPI from '@/API/pokemon'
+import ItemAPI from '@/API/item'
 
 //components
 import ProfileTab from './ProfileTab'
@@ -50,16 +51,21 @@ export default {
   data () {
     return {
       pokemonList: this.items,
+      itemsList: [],
       choosedPokemonList: [],
       tabIndex: 0
     }
   },
   async mounted() {
+    this.getItems()
   },
   methods: {
     async searchPokemon(id) {
       this.$set(this.choosedPokemonList, this.tabIndex, await PokemonAPI.getPokemonById(id))
       // this.choosedPokemonList[this.tabIndex] = await PokemonAPI.getPokemonById(id);
+    },
+    async getItems() {
+      this.itemsList = await ItemAPI.getAllItems()
     },
     changeTab(index) {
       this.tabIndex = index

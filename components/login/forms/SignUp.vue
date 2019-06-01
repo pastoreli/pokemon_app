@@ -3,7 +3,7 @@
     <h2 class="mb-4">Sign Up</h2>
     <v-text-field 
       v-model="form.username" 
-      class="pok-input-text mini mb-2" 
+      class="pok-input mini mb-2" 
       name="username" 
       label="Username" 
       type="email" 
@@ -11,7 +11,7 @@
       hide-details />
     <v-text-field 
       v-model="form.email" 
-      class="pok-input-text mini mb-2" 
+      class="pok-input mini mb-2" 
       name="email" 
       label="E-mail" 
       type="email" 
@@ -19,7 +19,7 @@
       hide-details />
     <v-text-field 
       v-model="form.password" 
-      class="pok-input-text mini mb-2" 
+      class="pok-input mini mb-2" 
       name="password" 
       label="Password" 
       type="password" 
@@ -27,7 +27,7 @@
       hide-details />
     <v-text-field 
       v-model="confirmPassword" 
-      class="pok-input-text mini mb-2" 
+      class="pok-input mini mb-2" 
       name="repeat_password" 
       label="Repeat Password" 
       type="password" 

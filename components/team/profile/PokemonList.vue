@@ -6,7 +6,7 @@
           hide-details
           placeholder="Search Pokemon" 
           append-icon="fas fa-search" 
-          class="pok-input-text-search pa-0 ma-0"
+          class="pok-input-search pa-0 ma-0"
           @input="search" />
       </v-flex>
     </v-layout>

@@ -1,10 +1,10 @@
 <template>
   <div class="pok-fill--all pok-team">
     <v-layout row wrap class="pok-fill--all">
-      <v-flex xs4 px-1 class="pok-fill--all">
+      <v-flex xs3 px-1 class="pok-fill--all">
         <team-list />
       </v-flex>
-      <v-flex xs8 px-1 class="pok-fill--all">
+      <v-flex xs9 px-1 class="pok-fill--all">
         <team-profile :items="pokemonList" />
       </v-flex>
     </v-layout>

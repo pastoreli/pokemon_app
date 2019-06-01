@@ -4,31 +4,32 @@
       <v-flex xs6>
         <v-layout row wrap>
           
-          <v-flex xs6 class="px-2 mb-3"> 
+          <!-- <v-flex xs6 class="px-2 mb-3"> 
 
             <label class="white--text pok-text--h4" >Pokémon:</label>
             <v-text-field
               :value="pokemon.name"
               readonly
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+              class="pok-input opt--dark mini mb-2 no-label" 
               name="pokemon" 
               box 
               hide-details />
-            </v-flex>
+            </v-flex> -->
 
-          <v-flex xs6 class="px-2 mb-3"> 
+          <v-flex xs12 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Nickname:</label>
             <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+            v-model="formData.name"
+              class="pok-input opt--dark mini mb-2 no-label" 
               name="nickname" 
               box 
               hide-details />
           </v-flex>
           
-          <v-flex xs3 class="px-2 mb-3"> 
+          <!-- <v-flex xs3 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Level:</label>
             <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+              class="pok-input opt--dark mini mb-2 no-label" 
               name="level" 
               box 
               hide-details />
@@ -37,25 +38,25 @@
           <v-flex xs3 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Gender:</label>
             <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+              class="pok-input opt--dark mini mb-2 no-label" 
               name="gender" 
               box 
               hide-details />
-          </v-flex>
+          </v-flex> -->
           
-          <v-flex xs3 class="px-2 mb-3"> 
+          <!-- <v-flex xs6 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Happinnes:</label>
             <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+              class="pok-input opt--dark mini mb-2 no-label" 
               name="happinnes" 
               box 
               hide-details />
-          </v-flex>
+          </v-flex> -->
           
-          <v-flex xs3 class="px-2 mb-3"> 
+          <v-flex xs6 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Nature:</label>
             <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+              class="pok-input opt--dark mini mb-2 no-label" 
               name="nature" 
               box 
               hide-details />
@@ -63,64 +64,122 @@
           
           <v-flex xs6 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Item:</label>
-            <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
+            <v-autocomplete
+              v-model="formData.item_id"
+              :items="items"
+              item-text="name"
+              item-value="id"
+              color="#f5f5f5"
+              class="pok-input pok-input-select icon opt--dark mini mb-2 no-label" 
+              name="item" 
+              box 
+              hide-details>
+
+              <template v-slot:selection="data">
+                  <v-list-tile-avatar>
+                    <img :src="data.item.sprite">
+                  </v-list-tile-avatar>
+                  <v-list-tile-content v-text="data.item.name" class="white--text"></v-list-tile-content>
+              </template>
+              
+              <template v-slot:item="data" class="pok-third-brand--light pok-fill--all">
+                <v-list-tile-avatar>
+                  <img :src="data.item.sprite">
+                </v-list-tile-avatar>
+                <v-list-tile-content v-text="data.item.name" class="white--text"></v-list-tile-content>
+              </template>
+              
+            </v-autocomplete>
+          </v-flex>
+          
+          <v-flex xs12 class="px-2 mb-3"> 
+            <label class="white--text pok-text--h4">Ability:</label>
+            <v-autocomplete
+              v-model="formData.ability_id"
+              :items="pokemon.abilities"
+              item-text="name"
+              item-value="id"
+              color="#f5f5f5"
+              class="pok-input pok-input-select icon opt--dark mini mb-2 no-label" 
               name="item" 
               box 
               hide-details />
           </v-flex>
-          
-          <v-flex xs6 class="px-2 mb-3"> 
-            <label class="white--text pok-text--h4">Ability:</label>
-            <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
-              name="password" 
-              box 
-              hide-details />
-          </v-flex>
-          
-          <v-flex xs6 class="px-2 mb-3"> 
-            <label class="white--text pok-text--h4">Moves:</label>
-            <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
-              name="password" 
-              box 
-              hide-details />
-          </v-flex>
-          
-          <v-flex xs6 class="px-2 mb-3"> 
-            <label class="white--text pok-text--h4">-</label>
-            <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
-              name="password" 
-              box 
-              hide-details />
-          </v-flex>
-          
-          <v-flex xs6 class="px-2 mb-3"> 
-            <label class="white--text pok-text--h4">-</label>
-            <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
-              name="password" 
-              box 
-              hide-details />
-          </v-flex>
 
-          <v-flex xs6 class="px-2 mb-3"> 
-            <label class="white--text pok-text--h4">-</label>
-            <v-text-field
-              class="pok-input-text opt--dark mini mb-2 no-label" 
-              name="" 
-              box 
-              hide-details />
+          <v-flex xs12>
+            <v-layout row wrap>
+              <v-flex xs6 class="px-2 mb-3"> 
+                <label class="white--text pok-text--h4">Moves:</label>
+                <v-autocomplete
+                  v-model="formData.moves[0]"
+                  :items="moveList"
+                  item-text="name"
+                  item-value="id"
+                  item-disabled="disabled"
+                  color="#f5f5f5"
+                  class="pok-input pok-input-select icon opt--dark mini mb-2 no-label" 
+                  name="item" 
+                  box 
+                  hide-details
+                  @change="lockMove()" />
+              </v-flex>
+            
+              <v-flex xs6 class="px-2 mb-3"> 
+                <!-- <label class="white--text pok-text--h4">-</label> -->
+                <v-autocomplete
+                  v-model="formData.moves[1]"
+                  :items="moveList"
+                  item-text="name"
+                  item-value="id"
+                  item-disabled="disabled"
+                  color="#f5f5f5"
+                  class="pok-input pok-input-select icon opt--dark mini mb-2 mt-4 no-label" 
+                  name="item" 
+                  box 
+                  hide-details
+                  @change="lockMove()" />
+              </v-flex>
+          
+              <v-flex xs6 class="px-2 mb-3"> 
+                <!-- <label class="white--text pok-text--h4">-</label> -->
+                <v-autocomplete
+                  v-model="formData.moves[2]"
+                  :items="moveList"
+                  item-text="name"
+                  item-value="id"
+                  item-disabled="disabled"
+                  color="#f5f5f5"
+                  class="pok-input pok-input-select icon opt--dark mini mb-2 no-label" 
+                  name="item" 
+                  box 
+                  hide-details
+                  @change="lockMove()" />
+              </v-flex>
+
+              <v-flex xs6 class="px-2 mb-3"> 
+                <!-- <label class="white--text pok-text--h4">-</label> -->
+                <v-autocomplete
+                  v-model="formData.moves[3]"
+                  :items="moveList"
+                  item-text="name"
+                  item-value="id"
+                  item-disabled="disabled"
+                  color="#f5f5f5"
+                  class="pok-input pok-input-select icon opt--dark mini mb-2 no-label" 
+                  name="item" 
+                  box 
+                  hide-details
+                  @change="lockMove()" />
+              </v-flex>
+            </v-layout>
           </v-flex>
 
         </v-layout>
       </v-flex>
       <v-flex xs6>
 
-        <v-layout row wrap py-4 px-2>  
-            <v-flex xs6>
+        <v-layout row wrap px-2>  
+            <v-flex xs6 pt-4>
               <v-layout row wrap>
                 <v-flex xs4 py-2 mb-4>
                   <span class="white--text pok-text--h4">HP</span>
@@ -139,31 +198,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-layout row wrap>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-                <v-flex xs6 px-3>
-                  <v-slider
-                    v-model="slider"
-                    color="white"
-                    track-color="white"
-                    thumb-color="pok-primary-brand"
-                    always-dirty
-                    style="margin-top: 5px" />
-                </v-flex>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-              </v-layout>
+              <ev-iv-fields hasLabel />
             </v-flex>
           
             <v-flex xs6>
@@ -185,31 +220,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-layout row wrap>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-                <v-flex xs6 px-3>
-                  <v-slider
-                    v-model="slider"
-                    color="white"
-                    track-color="white"
-                    thumb-color="pok-primary-brand"
-                    always-dirty
-                    style="margin-top: 5px" />
-                </v-flex>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-              </v-layout>
+              <ev-iv-fields />
             </v-flex>
 
             <v-flex xs6>
@@ -231,31 +242,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-layout row wrap>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-                <v-flex xs6 px-3>
-                  <v-slider
-                    v-model="slider"
-                    color="white"
-                    track-color="white"
-                    thumb-color="pok-primary-brand"
-                    always-dirty
-                    style="margin-top: 5px" />
-                </v-flex>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-              </v-layout>
+              <ev-iv-fields />
             </v-flex>
 
             <v-flex xs6>
@@ -277,31 +264,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-layout row wrap>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-                <v-flex xs6 px-3>
-                  <v-slider
-                    v-model="slider"
-                    color="white"
-                    track-color="white"
-                    thumb-color="pok-primary-brand"
-                    always-dirty
-                    style="margin-top: 5px" />
-                </v-flex>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-              </v-layout>
+              <ev-iv-fields />
             </v-flex>
 
             <v-flex xs6>
@@ -323,31 +286,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-layout row wrap>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-                <v-flex xs6 px-3>
-                  <v-slider
-                    v-model="slider"
-                    color="white"
-                    track-color="white"
-                    thumb-color="pok-primary-brand"
-                    always-dirty
-                    style="margin-top: 5px" />
-                </v-flex>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-              </v-layout>
+              <ev-iv-fields />
             </v-flex>
 
             <v-flex xs6>
@@ -369,31 +308,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-layout row wrap>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-                <v-flex xs6 px-3>
-                  <v-slider
-                    v-model="slider"
-                    color="white"
-                    track-color="white"
-                    thumb-color="pok-primary-brand"
-                    always-dirty
-                    style="margin-top: 5px" />
-                </v-flex>
-                <v-flex xs3>
-                  <v-text-field
-                    class="pok-input-text opt--dark mini mb-2 no-label" 
-                    name="pokemon" 
-                    box 
-                    hide-details />
-                </v-flex>
-              </v-layout>
+              <ev-iv-fields />
             </v-flex>
 
 
@@ -408,16 +323,61 @@
 </template>
 
 <script>
+
+import EvIvFields from './EvIvFields'
+
 export default {
+  components: {
+    EvIvFields
+  },
   props: {
     pokemon: {
       required: true,
       default: null
+    },
+    items: {
+      required: true,
+      type: Array,
+      default: () => []
     }
   },
   data () {
     return {
-      statsPercent: 200
+      statsPercent: 200,
+      moveList: this.pokemon.moves || [],
+      formData: {
+        pokemon_id: this.pokemon.id || null,
+        name: null,
+        ability_id: null,
+        nature_id: null,
+        item_id: null,
+        ivs: {
+          hp: null,
+          atk: null,
+          def: null,
+          sp_atk: null,
+          sp_def: null,
+          speed: null
+        },
+        evs: {
+          hp: null,
+          atk: null,
+          def: null,
+          sp_atk: null,
+          sp_def: null,
+          speed: null
+        },
+        moves: []
+      }
+    }
+  },
+  methods: {
+    lockMove() {
+      this.moveList = this.moveList.map(move => {
+          move['disabled'] = this.formData.moves.includes(move.id)
+          return move
+      })
+      console.log(this.moveList)
     }
   }
 }
