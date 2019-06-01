@@ -117,90 +117,281 @@
 
         </v-layout>
       </v-flex>
-      <v-flex xs3>
+      <v-flex xs6>
 
         <v-layout row wrap py-4 px-2>  
-            
-            <v-flex xs4 py-2 mb-4>
-              <span class="white--text pok-text--h4">HP</span>
-            </v-flex>
-            <v-flex xs8>
-              <v-layout row wrap pa-0>
-                <v-flex xs4 md2 py-2>
-                  <span class="white--text pok-text--h4">{{pokemon.stats.hp}}</span>
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs4 py-2 mb-4>
+                  <span class="white--text pok-text--h4">HP</span>
                 </v-flex>
-                <v-flex xs8 md10 pr-4 py-0>
-                  <v-progress-linear :value="((pokemon.stats.hp/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
-                </v-flex>
-              </v-layout>
-            </v-flex>
-
-            <v-flex xs4 py-2 mb-4>
-              <span class="white--text pok-text--h4">Attack</span>
-            </v-flex>
-            <v-flex xs8>
-              <v-layout row wrap pa-0>
-                <v-flex xs4 md2 py-2>
-                  <span class="white--text pok-text--h4">{{pokemon.stats.atk}}</span>
-                </v-flex>
-                <v-flex xs8 md10 pr-4 py-0>
-                  <v-progress-linear :value="((pokemon.stats.atk/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                <v-flex xs8>
+                  <v-layout row wrap pa-0>
+                    <v-flex xs4 md2 py-2>
+                      <span class="white--text pok-text--h4">{{pokemon.stats.hp}}</span>
+                    </v-flex>
+                    <v-flex xs8 md10 pr-4 py-0>
+                      <v-progress-linear :value="((pokemon.stats.hp/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                    </v-flex>
+                  </v-layout>
                 </v-flex>
               </v-layout>
             </v-flex>
 
-            <v-flex xs4 py-2 mb-4>
-              <span class="white--text pok-text--h4">Defense</span>
-            </v-flex>
-            <v-flex xs8>
-              <v-layout row wrap pa-0>
-                <v-flex xs4 md2 py-2>
-                  <span class="white--text pok-text--h4">{{pokemon.stats.def}}</span>
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
                 </v-flex>
-                <v-flex xs8 md10 pr-4 py-0>
-                  <v-progress-linear :value="((pokemon.stats.def/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                <v-flex xs6 px-3>
+                  <v-slider
+                    v-model="slider"
+                    color="white"
+                    track-color="white"
+                    thumb-color="pok-primary-brand"
+                    always-dirty
+                    style="margin-top: 5px" />
+                </v-flex>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+          
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs4 py-2 mb-4>
+                  <span class="white--text pok-text--h4">Attack</span>
+                </v-flex>
+                <v-flex xs8>
+                  <v-layout row wrap pa-0>
+                    <v-flex xs4 md2 py-2>
+                      <span class="white--text pok-text--h4">{{pokemon.stats.atk}}</span>
+                    </v-flex>
+                    <v-flex xs8 md10 pr-4 py-0>
+                      <v-progress-linear :value="((pokemon.stats.atk/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                    </v-flex>
+                  </v-layout>
                 </v-flex>
               </v-layout>
             </v-flex>
 
-            <v-flex xs4 py-2 mb-4>
-              <span class="white--text pok-text--h4">Sp.Atk</span>
-            </v-flex>
-            <v-flex xs8>
-              <v-layout row wrap pa-0>
-                <v-flex xs4 md2 py-2>
-                  <span class="white--text pok-text--h4">{{pokemon.stats.sp_atk}}</span>
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
                 </v-flex>
-                <v-flex xs8 md10 pr-4 py-0>
-                  <v-progress-linear :value="((pokemon.stats.sp_atk/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                <v-flex xs6 px-3>
+                  <v-slider
+                    v-model="slider"
+                    color="white"
+                    track-color="white"
+                    thumb-color="pok-primary-brand"
+                    always-dirty
+                    style="margin-top: 5px" />
+                </v-flex>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
                 </v-flex>
               </v-layout>
             </v-flex>
 
-            <v-flex xs4 py-2 mb-4>
-              <span class="white--text pok-text--h4">Sp.Def</span>
-            </v-flex>
-            <v-flex xs8>
-              <v-layout row wrap pa-0>
-                <v-flex xs4 md2 py-2>
-                  <span class="white--text pok-text--h4">{{pokemon.stats.sp_def}}</span>
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs4 py-2 mb-4>
+                  <span class="white--text pok-text--h4">Defense</span>
                 </v-flex>
-                <v-flex xs8 md10 pr-4 py-0>
-                  <v-progress-linear :value="((pokemon.stats.sp_def/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                <v-flex xs8>
+                  <v-layout row wrap pa-0>
+                    <v-flex xs4 md2 py-2>
+                      <span class="white--text pok-text--h4">{{pokemon.stats.def}}</span>
+                    </v-flex>
+                    <v-flex xs8 md10 pr-4 py-0>
+                      <v-progress-linear :value="((pokemon.stats.def/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                    </v-flex>
+                  </v-layout>
                 </v-flex>
               </v-layout>
             </v-flex>
 
-            <v-flex xs4 py-2 mb-4>
-              <span class="white--text pok-text--h4">Speed</span>
-            </v-flex>
-            <v-flex xs8>
-              <v-layout row wrap pa-0>
-                <v-flex xs4 md2 py-2>
-                  <span class="white--text pok-text--h4">{{pokemon.stats.speed}}</span>
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
                 </v-flex>
-                <v-flex xs8 md10 pr-4 py-0>
-                  <v-progress-linear :value="((pokemon.stats.speed/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                <v-flex xs6 px-3>
+                  <v-slider
+                    v-model="slider"
+                    color="white"
+                    track-color="white"
+                    thumb-color="pok-primary-brand"
+                    always-dirty
+                    style="margin-top: 5px" />
+                </v-flex>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs4 py-2 mb-4>
+                  <span class="white--text pok-text--h4">Sp.Atk</span>
+                </v-flex>
+                <v-flex xs8>
+                  <v-layout row wrap pa-0>
+                    <v-flex xs4 md2 py-2>
+                      <span class="white--text pok-text--h4">{{pokemon.stats.sp_atk}}</span>
+                    </v-flex>
+                    <v-flex xs8 md10 pr-4 py-0>
+                      <v-progress-linear :value="((pokemon.stats.sp_atk/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                    </v-flex>
+                  </v-layout>
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+                <v-flex xs6 px-3>
+                  <v-slider
+                    v-model="slider"
+                    color="white"
+                    track-color="white"
+                    thumb-color="pok-primary-brand"
+                    always-dirty
+                    style="margin-top: 5px" />
+                </v-flex>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs4 py-2 mb-4>
+                  <span class="white--text pok-text--h4">Sp.Def</span>
+                </v-flex>
+                <v-flex xs8>
+                  <v-layout row wrap pa-0>
+                    <v-flex xs4 md2 py-2>
+                      <span class="white--text pok-text--h4">{{pokemon.stats.sp_def}}</span>
+                    </v-flex>
+                    <v-flex xs8 md10 pr-4 py-0>
+                      <v-progress-linear :value="((pokemon.stats.sp_def/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                    </v-flex>
+                  </v-layout>
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+                <v-flex xs6 px-3>
+                  <v-slider
+                    v-model="slider"
+                    color="white"
+                    track-color="white"
+                    thumb-color="pok-primary-brand"
+                    always-dirty
+                    style="margin-top: 5px" />
+                </v-flex>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs4 py-2 mb-4>
+                  <span class="white--text pok-text--h4">Speed</span>
+                </v-flex>
+                <v-flex xs8>
+                  <v-layout row wrap pa-0>
+                    <v-flex xs4 md2 py-2>
+                      <span class="white--text pok-text--h4">{{pokemon.stats.speed}}</span>
+                    </v-flex>
+                    <v-flex xs8 md10 pr-4 py-0>
+                      <v-progress-linear :value="((pokemon.stats.speed/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                    </v-flex>
+                  </v-layout>
+                </v-flex>
+              </v-layout>
+            </v-flex>
+
+            <v-flex xs6>
+              <v-layout row wrap>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
+                </v-flex>
+                <v-flex xs6 px-3>
+                  <v-slider
+                    v-model="slider"
+                    color="white"
+                    track-color="white"
+                    thumb-color="pok-primary-brand"
+                    always-dirty
+                    style="margin-top: 5px" />
+                </v-flex>
+                <v-flex xs3>
+                  <v-text-field
+                    class="pok-input-text opt--dark mini mb-2 no-label" 
+                    name="pokemon" 
+                    box 
+                    hide-details />
                 </v-flex>
               </v-layout>
             </v-flex>

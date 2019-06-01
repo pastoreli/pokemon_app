@@ -10,11 +10,11 @@
           <div class="form-login-content">
             <sign-up 
               v-if="page === 'signup'" 
-              @signIn="signUp" 
+              @signUp="signUp" 
               @changePage="changePage"></sign-up>
             <sign-in 
               v-else 
-              @signUp="signIn" 
+              @signIn="signIn" 
               @changePage="changePage"></sign-in>
           </div>
 
@@ -54,12 +54,18 @@ export default {
     close() {
       this.$emit('close')
     },
-    signIn( data ) {
-      if( Auth.signIn( data ) ) {
+    async signIn( data ) {
 
-      }else{
+      await Auth.signIn( data ).then(res => {
+        console.log('ress', res)
 
-      }
+        this.$store.dispatch('setToken', res)
+
+        this.close()
+
+      }).catch(error =>  {
+
+      })
     },
     signUp( data ) {
       if( Auth.signIn( data ) ) {

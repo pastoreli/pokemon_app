@@ -10,8 +10,8 @@ export default {
         }
       })
       .then( res => {
-      console.log('login', res)
-      return true;
+      // console.log('login', res)
+      return res.headers.authorization;
     }).catch( err => {
       console.log('error ', err)
       return false;

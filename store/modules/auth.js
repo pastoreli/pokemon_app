@@ -8,7 +8,10 @@ export default {
       commit( 'SET_TOKEN', token )
     },
     getToken( {commit} ) {
-      commit( 'GET_TOKEN', )
+      commit( 'GET_TOKEN' )
+    },
+    removeToken( {commit} ) {
+      commit( 'REMOVE_TOKEN' )
     }
   },
   mutations: {
@@ -17,6 +20,9 @@ export default {
     },
     GET_TOKEN( state ) {
       return state.token
+    },
+    REMOVE_TOKEN( state ) {
+      state.token = null
     }
   }
 

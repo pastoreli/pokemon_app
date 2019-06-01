@@ -47,7 +47,11 @@ export default {
     {
       src: '@/plugins/poke-filters',
       ssr: false
-    }
+    },
+    {
+      src: '~/plugins/vuex-persistedstate.js',
+      ssr: false
+    },
   ],
 
   /*
