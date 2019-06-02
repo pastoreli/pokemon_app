@@ -1,11 +1,11 @@
 import axios from './axios';
-const route = '/ability';
+const route = '/team';
 
 export default {
-  getAbilityById: id => axios.create().get(`${route}/${id}`)
+  createTeam: (name) => axios.create().post(route, name)
   .then(res => res.data)
   .catch(error => {
     console.log('error', error);
-    return {}
+    return null;
   })
 }

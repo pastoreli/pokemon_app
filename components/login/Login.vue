@@ -60,6 +60,7 @@ export default {
         console.log('ress', res)
 
         this.$store.dispatch('setToken', res)
+        localStorage.setItem('accessToken', res)
 
         this.close()
 

@@ -4,7 +4,7 @@ const route = '/auth';
 export default {
   signIn: async (data) => {
     console.log(JSON.stringify(data))
-    return axios.post(route, JSON.stringify(data), {
+    return axios.create().post(route, JSON.stringify(data), {
         headers: {
           'Content-Type': 'Application/Json'
         }

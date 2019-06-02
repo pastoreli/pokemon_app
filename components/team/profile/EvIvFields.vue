@@ -3,27 +3,33 @@
     <v-flex xs3>
       <label v-if="hasLabel" class="white--text pok-text--h4" >EVs</label>
       <v-text-field
+        v-model="formData.EV"
         class="pok-input opt--dark mini mb-2 no-label" 
-        name="pokemon" 
+        name="evs" 
         box 
-        hide-details />
+        hide-details
+        @input="emitChanges()" />
     </v-flex>
     <v-flex xs6 px-3>
       <v-slider
-        v-model="slider"
+        v-model="formData.EV"
         color="white"
         track-color="white"
         thumb-color="pok-primary-brand"
+        max="250"
         always-dirty
-        :style="`margin-top: ${hasLabel? '30' : '5'}px`" />
+        :style="`margin-top: ${hasLabel? '30' : '5'}px`"
+        @change="emitChanges()" />
     </v-flex>
     <v-flex xs3>
       <label v-if="hasLabel" class="white--text pok-text--h4" >IVs</label>
       <v-text-field
+        v-model="formData.IV"
         class="pok-input opt--dark mini mb-2 no-label" 
         name="pokemon" 
         box 
-        hide-details />
+        hide-details
+        @input="emitChanges()" />
     </v-flex>
   </v-layout>
 </template>
@@ -36,7 +42,20 @@ export default {
       type: Boolean,
       default: false
     }
-  }
+  },
+  data() {
+    return {
+      formData: {
+        EV: 0,
+        IV: 0
+      }
+    }
+  },
+  methods: {
+    emitChanges() {
+      this.$emit('change', this.formData)
+    }
+  } 
 }
 </script>
 

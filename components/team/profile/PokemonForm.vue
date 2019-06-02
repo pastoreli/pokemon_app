@@ -1,5 +1,5 @@
 <template>
-  <v-container class="overflow-auto pok-team-content pok-third-brand--light">
+  <v-container v-if="pokemon" class="overflow-auto pok-team-content pok-third-brand--light">
     <v-layout row wrap>
       <v-flex xs6>
         <v-layout row wrap>
@@ -198,7 +198,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields hasLabel />
+              <ev-iv-fields hasLabel @change="(data) => listenStatus(data, 'hp')" />
             </v-flex>
           
             <v-flex xs6>
@@ -220,7 +220,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields />
+              <ev-iv-fields @change="(data) => listenStatus(data, 'atk')" />
             </v-flex>
 
             <v-flex xs6>
@@ -242,7 +242,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields />
+              <ev-iv-fields @change="(data) => listenStatus(data, 'def')" />
             </v-flex>
 
             <v-flex xs6>
@@ -264,7 +264,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields />
+              <ev-iv-fields @change="(data) => listenStatus(data, 'sp_atk')" />
             </v-flex>
 
             <v-flex xs6>
@@ -286,7 +286,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields />
+              <ev-iv-fields @change="(data) => listenStatus(data, 'sp_def')" />
             </v-flex>
 
             <v-flex xs6>
@@ -308,7 +308,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields />
+              <ev-iv-fields @change="(data) => listenStatus(data, 'speed')" />
             </v-flex>
 
 
@@ -316,7 +316,6 @@
 
       </v-flex>
       <v-flex xs3>
-
       </v-flex>
     </v-layout>
   </v-container>
@@ -335,6 +334,10 @@ export default {
       required: true,
       default: null
     },
+    data: {
+      required: true,
+      default: null
+    },
     items: {
       required: true,
       type: Array,
@@ -344,9 +347,9 @@ export default {
   data () {
     return {
       statsPercent: 200,
-      moveList: this.pokemon.moves || [],
+      moveList: this.pokemon? this.pokemon.moves : [],
       formData: {
-        pokemon_id: this.pokemon.id || null,
+        pokemon_id: this.pokemon? this.pokemon.id : null,
         name: null,
         ability_id: null,
         nature_id: null,
@@ -377,7 +380,13 @@ export default {
           move['disabled'] = this.formData.moves.includes(move.id)
           return move
       })
-      console.log(this.moveList)
+    },
+    listenStatus(data, key) {
+      this.formData.ivs[key] = data.IV
+      this.formData.evs[key] = data.EV
+    },
+    getFormData() {
+      return this.formData
     }
   }
 }
