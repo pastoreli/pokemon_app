@@ -198,7 +198,11 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields hasLabel @change="(data) => listenStatus(data, 'hp')" />
+              <ev-iv-fields 
+                :data="{EV: formData.evs.hp, IV: formData.ivs.hp}" 
+                hasLabel
+                ref="EVIVfieldHP"
+                @change="(data) => listenStatus(data, 'hp')" />
             </v-flex>
           
             <v-flex xs6>
@@ -220,7 +224,10 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields @change="(data) => listenStatus(data, 'atk')" />
+              <ev-iv-fields 
+                :data="{EV: formData.evs.atk, IV: formData.ivs.atk}" 
+                ref="EVIVfieldAtk"
+                @change="(data) => listenStatus(data, 'atk')" />
             </v-flex>
 
             <v-flex xs6>
@@ -242,7 +249,10 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields @change="(data) => listenStatus(data, 'def')" />
+              <ev-iv-fields 
+                :data="{EV: formData.evs.def, IV: formData.ivs.def}" 
+                ref="EVIVfieldDef"
+                @change="(data) => listenStatus(data, 'def')" />
             </v-flex>
 
             <v-flex xs6>
@@ -264,7 +274,10 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields @change="(data) => listenStatus(data, 'sp_atk')" />
+              <ev-iv-fields 
+                :data="{EV: formData.evs.sp_atk, IV: formData.ivs.sp_atk}" 
+                ref="EVIVfieldSpAtk"
+                @change="(data) => listenStatus(data, 'sp_atk')" />
             </v-flex>
 
             <v-flex xs6>
@@ -286,7 +299,10 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields @change="(data) => listenStatus(data, 'sp_def')" />
+              <ev-iv-fields 
+                :data="{EV: formData.evs.sp_def, IV: formData.ivs.sp_def}" 
+                ref="EVIVfieldSpDef"
+                @change="(data) => listenStatus(data, 'sp_def')" />
             </v-flex>
 
             <v-flex xs6>
@@ -308,7 +324,10 @@
             </v-flex>
 
             <v-flex xs6>
-              <ev-iv-fields @change="(data) => listenStatus(data, 'speed')" />
+              <ev-iv-fields 
+                :data="{EV: formData.evs.speed, IV: formData.ivs.spped}" 
+                ref="EVIVfieldSpeed"
+                @change="(data) => listenStatus(data, 'speed')" />
             </v-flex>
 
 
@@ -375,6 +394,19 @@ export default {
     }
   },
   methods: {
+    reload() {
+      if(this.data) {
+        this.formData = this.data
+        setTimeout(() => {
+          this.$refs.EVIVfieldHP.reload()
+          this.$refs.EVIVfieldAtk.reload()
+          this.$refs.EVIVfieldDef.reload()
+          this.$refs.EVIVfieldSpAtk.reload()
+          this.$refs.EVIVfieldSpDef.reload()
+          this.$refs.EVIVfieldSpeed.reload()
+        }, 100);
+      }
+    },
     lockMove() {
       this.moveList = this.moveList.map(move => {
           move['disabled'] = this.formData.moves.includes(move.id)

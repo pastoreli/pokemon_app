@@ -27,7 +27,8 @@
 <script>
 
 //API
-import Auth from '@/API/auth';
+import AuthAPI from '@/API/auth';
+import UserAPI from '@/API/user';
 
 //components
 import SignIn from './forms/SignIn';
@@ -56,7 +57,7 @@ export default {
     },
     async signIn( data ) {
 
-      await Auth.signIn( data ).then(res => {
+      await AuthAPI.signIn( data ).then(res => {
         console.log('ress', res)
 
         this.$store.dispatch('setToken', res)
@@ -68,12 +69,18 @@ export default {
 
       })
     },
-    signUp( data ) {
-      if( Auth.signIn( data ) ) {
+    async signUp( data ) {
+      await UserAPI.createUser( data ).then(res => {
+        console.log('ress', res)
 
-      }else{
+        this.$store.dispatch('setToken', res)
+        localStorage.setItem('accessToken', res)
 
-      }
+        this.close()
+
+      }).catch(error =>  {
+
+      })
     },
     changePage( data ) {
       this.$emit('changePage', data)

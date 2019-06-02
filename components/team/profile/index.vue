@@ -85,14 +85,20 @@ export default {
     },
     changeTab(index) {
 
-      if(this.tabIndex !== index && this.choosedPokemon.data[this.tabIndex]){
+      if(this.tabIndex !== index && this.choosedPokemon.list[this.tabIndex]){
+        // this.$set(this.choosedPokemon.data, this.tabIndex, this.$refs.pokemonForm.getFormData())
         this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
       }
 
       this.tabIndex = index
+
+      if(this.choosedPokemon.list[this.tabIndex]) {
+        setTimeout(() => this.$refs.pokemonForm.reload(), 100)
+      }
+
     },
     async saveTeam() {
-      await TeamAPI.createTeam(this.teamName)
+      await TeamAPI.createTeam({name: this.teamName})
       .then(res => {
         console.log('save', res)
       }).catch(error => {

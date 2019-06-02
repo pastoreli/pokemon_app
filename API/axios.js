@@ -1,16 +1,12 @@
 import axios from 'axios';
-// const route = 'http://localhost:8080';
-const route = 'http://localhost:8000';
+const route = 'http://localhost:8080';
+// const route = 'http://localhost:8000';
 // const route = 'https://poke-tonhao.herokuapp.com';
 
 const checkIsExistToken = () => {
   const accessToken = localStorage.getItem('accessToken')
-  console.log(accessToken)
-  if (accessToken) {
-    return accessToken
-  } else if (!accessToken) {
-    // window.location = '/'
-  }
+  // console.log(accessToken)
+  return accessToken || ''
 }
 
 export default {
@@ -18,7 +14,10 @@ export default {
     baseURL: route,
     timeout: 10000,
     headers: {
-      Authorization: `Bearer ${checkIsExistToken()}`
+      Authorization: `${checkIsExistToken()}`,
+      "Access-Control-Expose-Headers": "Authorization",
+      "Content-Type": "Application/Json",
+      "Access-Control-Allow-Credentials": true
     }
   })
 }

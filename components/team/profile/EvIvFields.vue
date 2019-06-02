@@ -41,17 +41,26 @@ export default {
       required: false,
       type: Boolean,
       default: false
+    },
+    data: {
+      required: false,
+      type: Object,
+      default: null
     }
   },
   data() {
     return {
       formData: {
-        EV: 0,
-        IV: 0
+        EV: this.data? this.data.EV || 0 : 0,
+        IV: this.data? this.data.IV || 0 : 0
       }
     }
   },
   methods: {
+    reload() {
+      this.formData.EV = this.data? this.data.EV || 0 : 0
+      this.formData.IV = this.data? this.data.IV || 0 : 0
+    },
     emitChanges() {
       this.$emit('change', this.formData)
     }
