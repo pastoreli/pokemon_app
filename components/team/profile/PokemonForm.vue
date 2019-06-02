@@ -55,8 +55,13 @@
           
           <v-flex xs6 class="px-2 mb-3"> 
             <label class="white--text pok-text--h4">Nature:</label>
-            <v-text-field
-              class="pok-input opt--dark mini mb-2 no-label" 
+            <v-autocomplete
+              v-model="formData.nature_id"
+              :items="natures"
+              item-text="name"
+              item-value="id"
+              color="#f5f5f5"
+              class="pok-input pok-input-select icon opt--dark mini mb-2 no-label" 
               name="nature" 
               box 
               hide-details />
@@ -358,6 +363,11 @@ export default {
       default: null
     },
     items: {
+      required: true,
+      type: Array,
+      default: () => []
+    },
+    natures: {
       required: true,
       type: Array,
       default: () => []

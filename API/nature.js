@@ -1,8 +1,8 @@
 import axios from './axios';
-const route = '/item';
+const route = '/nature';
 
 export default {
-  getAllItems: (page = 0) => axios.create().get(`${route}?page=${page}`)
+  getAllNatures: (page = 0) => axios.create().get(`${route}?page=${page}`)
   .then(res => res.data)
   .catch(error => {
     console.log('error', error);

@@ -2,10 +2,10 @@
   <div class="pok-fill--all pok-team">
     <v-layout row wrap class="pok-fill--all">
       <v-flex xs3 px-1 class="pok-fill--all">
-        <team-list />
+        <team-list :livePokemon="teamData" />
       </v-flex>
       <v-flex xs9 px-1 class="pok-fill--all">
-        <team-profile :items="pokemonList" />
+        <team-profile :items="pokemonList" @liveChange="(data) => teamData = data" />
       </v-flex>
     </v-layout>
   </div>
@@ -32,6 +32,7 @@ export default {
     return {
       pokemonList: [],
       choosedPokemon: null,
+      teamData: null
     }
   },
   methods: {

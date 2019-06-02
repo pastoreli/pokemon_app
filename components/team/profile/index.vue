@@ -8,11 +8,12 @@
           name="team-name" 
           label="Team Name"
           box 
-          hide-details />
+          hide-details
+          @input="emitData()" />
       </v-flex>
       <v-flex xs8 text-xs-right py-3>
-        <span class="white--text pok-text--h4 mx-2"><i class="fas fa-trash-alt mr-1" />DELETE</span>
-        <span class="white--text mx-2 pok-text--h4" @click="saveTeam()"><i class="fas fa-save mr-1" />SAVE</span>
+        <span class="white--text pok-text--h4 mx-2 cursor-pointer"><i class="fas fa-trash-alt mr-1" />DELETE</span>
+        <span class="white--text mx-2 pok-text--h4 cursor-pointer" @click="saveTeam()"><i class="fas fa-save mr-1" />SAVE</span>
       </v-flex>
     </v-layout>
 
@@ -25,6 +26,7 @@
         :pokemon="choosedPokemon.list[tabIndex]" 
         :data="choosedPokemon.data[tabIndex] || null" 
         :items="itemsList"
+        :natures="naturesList"
         ref="pokemonForm" />
       <pokemon-list 
         v-else 
@@ -41,6 +43,7 @@
 import PokemonAPI from '@/API/pokemon'
 import TeamAPI from '@/API/team'
 import ItemAPI from '@/API/item'
+import NatureAPI from '@/API/nature'
 
 //components
 import ProfileTab from './ProfileTab'
@@ -64,6 +67,7 @@ export default {
     return {
       pokemonList: this.items,
       itemsList: [],
+      naturesList: [],
       teamName: null,
       choosedPokemon: {
         list: [],
@@ -74,14 +78,26 @@ export default {
   },
   async mounted() {
     this.getItems()
+    this.getNature()
   },
   methods: {
     async searchPokemon(id) {
       this.$set(this.choosedPokemon.list, this.tabIndex, await PokemonAPI.getPokemonById(id))
+      this.emitData()
       // this.choosedPokemon.list[this.tabIndex] = await PokemonAPI.getPokemonById(id);
     },
-    async getItems() {
-      this.itemsList = await ItemAPI.getAllItems()
+    async getItems(page = 0) {
+      await ItemAPI.getAllItems(page).then(res => {
+        this.itemsList.push(...res.content)
+        if(res.next) this.getItems(page+1);
+      }).catch(error => console.log(error))
+    },
+    async getNature(page = 0) {
+      await NatureAPI.getAllNatures(page).then(res => {
+        this.naturesList.push(...res.content)
+        console.log('nature', res)
+        if(res.next) this.getNature(page+1);
+      }).catch(error => console.log(error))
     },
     changeTab(index) {
 
@@ -97,13 +113,36 @@ export default {
       }
 
     },
+    emitData() {
+      const info = {
+        name: this.teamName,
+        pokemons: this.choosedPokemon.list.map(pok => pok.sprite)
+      }
+      this.$emit('liveChange', info)
+    },
     async saveTeam() {
       await TeamAPI.createTeam({name: this.teamName})
       .then(res => {
-        console.log('save', res)
+        if(this.choosedPokemon.list[this.tabIndex]){
+          this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
+        }
+        
+        this.savePokemonTeam(res, 0)
+        // this.choosedPokemon.data.forEach(async i => {
+        //   alert('hi')
+        //   await this.savePokemonTeam(res, i)
+        // })
       }).catch(error => {
         console.log('error', error)
       })
+    },
+    savePokemonTeam(teamId, index) {
+      TeamAPI.savePokemonTeam(teamId, this.choosedPokemon.data[index])
+        .then(res => {
+          if(this.choosedPokemon.data[index+1]){
+            this.savePokemonTeam(teamId, index+1)
+          }
+        }).catch(error => console.log('error', error))
     }
   },
 }

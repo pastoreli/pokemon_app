@@ -16,6 +16,9 @@
   &fill--{
     &height{
       height: 100%;
+      &-auto{
+        height: auto !important;
+      }
     }
     &width{
       width: 100%;
@@ -45,6 +48,10 @@
   }
   &auto{
     overflow: auto !important;
+  }
+  &normal{
+    overflow: unset !important;
+    height: auto;
   }
 }
 

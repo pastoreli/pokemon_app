@@ -15,9 +15,7 @@ export default {
     timeout: 10000,
     headers: {
       Authorization: `${checkIsExistToken()}`,
-      "Access-Control-Expose-Headers": "Authorization",
-      "Content-Type": "Application/Json",
-      "Access-Control-Allow-Credentials": true
+      
     }
   })
 }
