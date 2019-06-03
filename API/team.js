@@ -10,6 +10,14 @@ export default {
       return null;
     })
   },
+  getAllTeams: (page = 0) => {
+    return axios.create().get(`${route}?page=${page}`)
+    .then(res => res.data)
+    .catch(error => {
+      console.log('error', error.headers);
+      return [];
+    })
+  },
   savePokemonTeam: (teamId, pokemon) => {
     return axios.create().post(`${route}/${teamId}/pokemon`, pokemon)
     .then(res => {
@@ -19,6 +27,14 @@ export default {
     .catch(error => {
       console.log('error', error.headers);
       return null;
+    })
+  },
+  getPokemonByTeam: (teamId, pokemonId) => {
+    return axios.create().get(`${route}/${teamId}/pokemon/${pokemonId}`)
+    .then(res => res.data)
+    .catch(error => {
+      console.log('error', error)
+      return null
     })
   }
 }

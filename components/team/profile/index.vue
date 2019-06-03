@@ -137,12 +137,36 @@ export default {
       })
     },
     savePokemonTeam(teamId, index) {
-      TeamAPI.savePokemonTeam(teamId, this.choosedPokemon.data[index])
+      TeamAPI.savePokemonTeam(teamId, this.choosedPokemon.data)
         .then(res => {
-          if(this.choosedPokemon.data[index+1]){
-            this.savePokemonTeam(teamId, index+1)
-          }
+          // if(this.choosedPokemon.data[index+1]){
+          //   this.savePokemonTeam(teamId, index+1)
+          // }
         }).catch(error => console.log('error', error))
+    },
+    async activeEdition(team) {
+      for (const pok of team.pokemon) {
+        await await this.searchPokemon(pok.pokemon_id)
+        this.tabIndex++;
+      }
+      
+      this.tabIndex = 0;
+      this.choosedPokemon.data = team.pokemon.map(pok => {
+
+        pok['nature_id'] = pok.nature.id
+        pok['item_id'] = pok.item.id
+        pok['ability_id'] = pok.ability.id
+        pok.moves = pok.moves.map(move => move.id)
+        
+
+        return pok
+      })
+      this.choosedPokemon.data = team.pokemon
+
+      if(this.choosedPokemon.list[this.tabIndex]) {
+        setTimeout(() => this.$refs.pokemonForm.reload(), 100)
+      }
+      console.log(this.choosedPokemon.data)
     }
   },
 }

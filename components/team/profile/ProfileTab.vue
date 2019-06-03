@@ -2,7 +2,7 @@
   <v-layout row wrap class="pok-team-tab">
     <v-flex 
       v-for="(pokemon, index) in pokemonList" 
-      :key="pokemon._id" 
+      :key="pokemon.id" 
       xs2 
       :class="['pok-team-tab-item text-center cursor-pointer', activeTab === index? 'pok-third-brand--light' : '']"
       @click="changeTab(index)">
