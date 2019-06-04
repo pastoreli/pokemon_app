@@ -36,5 +36,13 @@ export default {
       console.log('error', error)
       return null
     })
+  },
+  deleteTeam: (teamId) => {
+    return axios.create().delete(`${route}/${teamId}`)
+    .then(res => res.data)
+    .catch(error => {
+      console.log('error', error)
+      return null
+    })
   }
 }

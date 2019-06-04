@@ -2,10 +2,17 @@
   <div class="pok-fill--all pok-team">
     <v-layout row wrap class="pok-fill--all">
       <v-flex xs3 px-1 class="pok-fill--all">
-        <team-list :teams="teamList" :livePokemon="teamData" @editTeam="editTeam" />
+        <team-list 
+          :teams="teamList" 
+          :livePokemon="teamData" 
+          @editTeam="editTeam" />
       </v-flex>
       <v-flex xs9 px-1 class="pok-fill--all">
-        <team-profile ref="teamProfile" :items="pokemonList" @liveChange="(data) => teamData = data" />
+        <team-profile 
+          ref="teamProfile" 
+          :items="pokemonList" 
+          @liveChange="(data) => teamData = data"
+          @update="updateList" />
       </v-flex>
     </v-layout>
   </div>
@@ -63,7 +70,9 @@ export default {
     },
 
     async editTeam(team) {
+      this.teamList = this.teamList.filter(i => i.id !== team.id)
       this.selectedTeam = {...team}
+      console.log('pok team', team)
       this.selectedTeam.pokemon = await this.searchPokemonTeam(this.selectedTeam.id, this.selectedTeam.pokemon, 0)
       // console.log(this.selectedTeam)
       this.$refs.teamProfile.activeEdition(this.selectedTeam)
@@ -79,6 +88,11 @@ export default {
         return array
 
       }).catch(error => console.log('error', error));
+    },
+    updateList(teamId) {
+      this.teamList = []
+      this.teamData = null
+      this.getTeams()
     }
 
   },

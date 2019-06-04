@@ -114,7 +114,6 @@
           <v-flex xs12>
             <v-layout row wrap>
               <v-flex xs6 class="px-2 mb-3"> 
-                {{formData.moves}}
                 <label class="white--text pok-text--h4">Moves:</label>
                 <v-autocomplete
                   v-model="formData.moves[0]"

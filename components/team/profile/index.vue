@@ -12,7 +12,8 @@
           @input="emitData()" />
       </v-flex>
       <v-flex xs8 text-xs-right py-3>
-        <span class="white--text pok-text--h4 mx-2 cursor-pointer"><i class="fas fa-trash-alt mr-1" />DELETE</span>
+        <span class="white--text pok-text--h4 mx-2 cursor-pointer" @click="cancel()"><i class="fas fa-ban mr-1" />CANCEL</span>
+        <span class="white--text pok-text--h4 mx-2 cursor-pointer" @click="removeTeam(editingTeam.id)"><i class="fas fa-trash-alt mr-1" />DELETE</span>
         <span class="white--text mx-2 pok-text--h4 cursor-pointer" @click="saveTeam()"><i class="fas fa-save mr-1" />SAVE</span>
       </v-flex>
     </v-layout>
@@ -65,6 +66,7 @@ export default {
   },
   data () {
     return {
+      editingTeam: null,
       pokemonList: this.items,
       itemsList: [],
       naturesList: [],
@@ -136,17 +138,35 @@ export default {
         console.log('error', error)
       })
     },
+    cancel() {
+      this.clearData()
+      this.$emit('update')
+    },
+    removeTeam(teamId) {
+      // alert(teamId)
+      TeamAPI.deleteTeam(teamId, this.choosedPokemon.data)
+      .then(res => {
+        this.clearData()
+        this.$emit('update')
+        console.log('apagou', res)
+      }).catch(error => console.log('error', error))
+    },
     savePokemonTeam(teamId, index) {
       TeamAPI.savePokemonTeam(teamId, this.choosedPokemon.data)
         .then(res => {
+          this.clearData()
+          this.$emit('update')
           // if(this.choosedPokemon.data[index+1]){
           //   this.savePokemonTeam(teamId, index+1)
           // }
         }).catch(error => console.log('error', error))
     },
     async activeEdition(team) {
+      this.editingTeam = {...team}
+      this.choosedPokemon.list = []
       for (const pok of team.pokemon) {
-        await await this.searchPokemon(pok.pokemon_id)
+        console.log('pok', pok)
+        await this.searchPokemon(pok.pokemon_id)
         this.tabIndex++;
       }
       
@@ -167,6 +187,12 @@ export default {
         setTimeout(() => this.$refs.pokemonForm.reload(), 100)
       }
       console.log(this.choosedPokemon.data)
+    },
+    clearData() {
+      this. choosedPokemon = {
+        list: [],
+        data: []
+      }
     }
   },
 }
