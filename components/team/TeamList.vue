@@ -17,9 +17,9 @@
             <button class="white--text pok-text--h2 mt-3"><i class="fas fa-plus" /></button>
           </v-list-tile-avatar> -->
         </v-list-tile>
-        <v-list-tile v-else class="overflow-normal">
-          <v-list-tile-content class="overflow-normal" style="background: #000">
-            <div class="pok-fill--width py-2">
+        <v-list-tile v-else class="overflow-normal py-3"  style="background: #000">
+          <v-list-tile-content class="overflow-normal" >
+            <div class="pok-fill--all">
               <label class="white--text ml-3 pok-text--h3">{{livePokemon.name || 'Sem nome'}}</label>
               <v-layout row wrap class="pa-0 ma-0">
                 <v-flex v-for="(pokemon, index) in livePokemon.pokemons" :key="index" xs2>
