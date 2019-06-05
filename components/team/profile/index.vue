@@ -19,7 +19,7 @@
     </v-layout>
 
     <v-container class="pok-third-brand--light-2 pok-round overflow-hidden pok-team-container pa-0">
-      <profile-tab 
+      <pokemon-tab 
         :pokemonList="choosedPokemon.list" 
         @changeTab="changeTab" />
       <pokemon-form 
@@ -47,13 +47,13 @@ import ItemAPI from '@/API/item'
 import NatureAPI from '@/API/nature'
 
 //components
-import ProfileTab from './ProfileTab'
+import PokemonTab from './PokemonTab'
 import PokemonList from './PokemonList'
 import PokemonForm from './PokemonForm'
 
 export default {
   components: {
-    ProfileTab,
+    PokemonTab,
     PokemonList,
     PokemonForm
   },
