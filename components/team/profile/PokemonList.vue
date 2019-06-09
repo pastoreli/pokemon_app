@@ -120,8 +120,7 @@ export default {
     search(val) {
       if(val.length > 2)
         this.pokemonList = this.items.filter(pok => pok.name.toLowerCase().includes(val.toLowerCase()));
-      else if(val.length == 2)
-        this.pokemonList = this.items;
+      else if(val.length == 2) this.pokemonList = this.items;
     }
   }
 }

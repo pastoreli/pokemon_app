@@ -21,7 +21,8 @@
     <v-container class="pok-third-brand--light-2 pok-round overflow-hidden pok-team-container pa-0">
       <pokemon-tab 
         :pokemonList="choosedPokemon.list" 
-        @changeTab="changeTab" />
+        @changeTab="changeTab"
+        @deletePokemon="deletePokemon" />
       <pokemon-form 
         v-if="choosedPokemon.list[tabIndex]" 
         :pokemon="choosedPokemon.list[tabIndex]" 
@@ -88,6 +89,17 @@ export default {
       this.emitData()
       // this.choosedPokemon.list[this.tabIndex] = await PokemonAPI.getPokemonById(id);
     },
+    async searchPokemonByTeam(pokemonList, index = 0) {
+      return await PokemonAPI.getPokemonById(pokemonList[index].pokemon_id)
+      .then(async res => {
+        let array = [res];
+        if(pokemonList[index+1]){
+          array.push(... await this.searchPokemonByTeam(pokemonList, index+1))
+        }
+        return array
+
+      }).catch(error => console.log('error', error));
+    },  
     async getItems(page = 0) {
       await ItemAPI.getAllItems(page).then(res => {
         this.itemsList.push(...res.content)
@@ -164,11 +176,15 @@ export default {
     async activeEdition(team) {
       this.editingTeam = {...team}
       this.choosedPokemon.list = []
-      for (const pok of team.pokemon) {
-        console.log('pok', pok)
-        await this.searchPokemon(pok.pokemon_id)
-        this.tabIndex++;
-      }
+      this.$set(this.choosedPokemon, 'list', await this.searchPokemonByTeam(team.pokemon))
+      console.log('lista', this.choosedPokemon.list)
+      this.emitData()
+
+      // for (const pok of team.pokemon) {
+      //   console.log('pok', pok)
+      //   await this.searchPokemon(pok.pokemon_id)
+      //   this.tabIndex++;
+      // }
       
       this.tabIndex = 0;
       this.choosedPokemon.data = team.pokemon.map(pok => {
@@ -193,7 +209,14 @@ export default {
         list: [],
         data: []
       }
-    }
+    },
+    deletePokemon(index) {
+      this.choosedPokemon.data.splice(index, 1)
+      this.choosedPokemon.list.splice(index, 1)
+
+      this.tabIndex = this.choosedPokemon.list.length
+      this.emitData()
+    } 
   },
 }
 </script>

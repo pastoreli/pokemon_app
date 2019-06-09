@@ -8,7 +8,11 @@
       @input="search" />
     <div>
       <v-list two-line class="transparent py-0">
-        <v-list-tile v-for="pokemon in pokemonList" :key="pokemon.id" class="pok-third-brand pb-3 pt-2 px-3 mb-1" @click="choosedPokemon(pokemon.id)">
+        <v-list-tile 
+          v-for="pokemon in pokemonList" 
+          :key="pokemon.id" 
+          class="pok-third-brand pb-3 pt-2 px-3 mb-1" 
+          @click="choosedPokemon(pokemon.id)">
           <v-list-tile-avatar>
             <img :src="pokemon.sprite" class="pok-img--sz4 mt-3" />
           </v-list-tile-avatar>

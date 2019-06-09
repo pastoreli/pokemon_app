@@ -6,9 +6,16 @@
   .pok-team-tab{
     height: 100px;
     .pok-team-tab-item{
+      position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
+
+      .pok-tab-close{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
 
       img{
         position: relative;

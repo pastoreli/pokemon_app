@@ -73,7 +73,7 @@ export default {
       await UserAPI.createUser( data ).then(res => {
         console.log('ress', res)
 
-        this.$store.dispatch('setToken', res)
+        this.$store.dispatch('auth/setToken', res)
         localStorage.setItem('accessToken', res)
 
         this.close()

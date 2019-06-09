@@ -3,7 +3,7 @@
     <v-layout row wrap class="pok-fill--all">
       <v-flex xs3 px-1 class="pok-fill--all">
         <team-list 
-          :teams="teamList" 
+          :teams="teamListAux" 
           :livePokemon="teamData" 
           @editTeam="editTeam" />
       </v-flex>
@@ -35,11 +35,13 @@ export default {
   },
   async mounted() {
     await this.getTeams()
+    this.teamListAux = this.teamList
     await this.getListPokemon()
   },
   data() {
     return {
       teamList: [],
+      teamListAux: [],
       pokemonList: [],
       choosedPokemon: null,
       selectedTeam: null,
@@ -70,7 +72,7 @@ export default {
     },
 
     async editTeam(team) {
-      this.teamList = this.teamList.filter(i => i.id !== team.id)
+      this.teamListAux = this.teamList.filter(i => i.id !== team.id)
       this.selectedTeam = {...team}
       console.log('pok team', team)
       this.selectedTeam.pokemon = await this.searchPokemonTeam(this.selectedTeam.id, this.selectedTeam.pokemon, 0)
@@ -89,10 +91,11 @@ export default {
 
       }).catch(error => console.log('error', error));
     },
-    updateList(teamId) {
+    async updateList(teamId) {
       this.teamList = []
       this.teamData = null
-      this.getTeams()
+      await this.getTeams()
+      this.teamListAux = this.teamList
     }
 
   },

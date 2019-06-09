@@ -18,9 +18,8 @@
 
 <script>
 
-import ToolBar from '@/components/partials/ToolBar';
-
 //components
+import ToolBar from '@/components/partials/ToolBar';
 import Login from '@/components/login/Login';
 
 export default {
