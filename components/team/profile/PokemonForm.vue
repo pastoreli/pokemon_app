@@ -414,6 +414,7 @@ export default {
           this.$refs.EVIVfieldSpAtk.reload()
           this.$refs.EVIVfieldSpDef.reload()
           this.$refs.EVIVfieldSpeed.reload()
+          this.moveList = this.pokemon? this.pokemon.moves : []
         }, 100);
       }
     },

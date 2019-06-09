@@ -21,13 +21,27 @@
         <label class="white--text pok-text--h4 font-weight-bold">Type</label>
       </v-flex>
       <v-flex xs5 text-xs-center>
-        <label class="white--text pok-text--h4 px-1 font-weight-bold">HP</label>
-        <label class="white--text pok-text--h4 px-1 font-weight-bold">Atk</label>
-        <label class="white--text pok-text--h4 px-1 font-weight-bold">Def</label>
-        <label class="white--text pok-text--h4 px-1 font-weight-bold">Spa</label>
-        <label class="white--text pok-text--h4 px-1 font-weight-bold">Spd</label>
-        <label class="white--text pok-text--h4 px-1 font-weight-bold">Spe</label>
-        <label class="white--text pok-text--h3 px-1 font-weight-bold">BST</label>
+        <v-layout row>
+          <v-flex xs2>
+            <label class="white--text pok-text--h4 font-weight-bold">HP</label>
+          </v-flex> 
+          <v-flex xs2>
+            <label class="white--text pok-text--h4 font-weight-bold">ATK</label>
+          </v-flex> 
+          <v-flex xs2>
+            <label class="white--text pok-text--h4 font-weight-bold">DEF</label>
+          </v-flex> 
+          <v-flex xs2>
+            <label class="white--text pok-text--h4 font-weight-bold">SP. ATK</label>
+          </v-flex> 
+          <v-flex xs2>
+            <label class="white--text pok-text--h4 font-weight-bold">SP. DEF</label>
+          </v-flex> 
+          <v-flex xs2>
+            <label class="white--text pok-text--h4 font-weight-bold">SPEED</label>
+          </v-flex> 
+        </v-layout>
+        <!-- <label class="white--text pok-text--h3 px-1 font-weight-bold">BST</label> -->
       </v-flex>
     </v-layout>
     <v-container class="overflow-auto pa-0" style="height: calc(100% - 130px)">
@@ -57,13 +71,27 @@
             </span>
           </v-flex>
           <v-flex xs5 text-xs-center>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">HP</label>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">Atk</label>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">Def</label>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">Spa</label>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">Spd</label>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">Spe</label>
-            <label class="white--text pok-text--h4 px-1 font-weight-bold">BST</label>
+            <v-layout row>
+              <v-flex xs2>
+                <label class="white--text pok-text--h4 font-weight-bold">{{pokemon.stats.hp}}</label>
+              </v-flex> 
+              <v-flex xs2>
+                <label class="white--text pok-text--h4 font-weight-bold">{{pokemon.stats.atk}}</label>
+              </v-flex> 
+              <v-flex xs2>
+                <label class="white--text pok-text--h4 font-weight-bold">{{pokemon.stats.def}}</label>
+              </v-flex> 
+              <v-flex xs2>
+                <label class="white--text pok-text--h4 font-weight-bold">{{pokemon.stats.sp_atk}}</label>
+              </v-flex> 
+              <v-flex xs2>
+                <label class="white--text pok-text--h4 font-weight-bold">{{pokemon.stats.sp_def}}</label>
+              </v-flex> 
+              <v-flex xs2>
+                <label class="white--text pok-text--h4 font-weight-bold">{{pokemon.stats.speed}}</label>
+              </v-flex> 
+            </v-layout>
+            <!-- <label class="white--text pok-text--h4 px-1 font-weight-bold">{{pokemon.stats.hp}}</label> -->
           </v-flex>
         </v-layout>
       </div>

@@ -33,7 +33,7 @@
         <v-list-tile 
           v-for="team in teams" 
           :key="team.id" 
-          class="py-3 mt-2 overflow-normal pok-third-brand--light cursor-pointer"
+          class="py-3 mt-2 overflow-normal pok-third-brand--light cursor-pointer pok-border"
           @click="editTeam(team)">
           <v-list-tile-content class="overflow-normal">
             <div class="pok-fill--width">
