@@ -25,7 +25,7 @@
 
         <v-list-tile v-else>
           <v-list-tile-content style="background: #000">
-            <v-progress-linear v-if="loadingTeamLive" indeterminate />
+            <v-progress-linear v-if="loadingTeamLive" indeterminate background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
             <div v-else class="pok-fill--width text-center">
               <span class="white--text text-center text-center-vertical--force"><i class="fas fa-plus" /> ADD TEAM</span>
             </div>

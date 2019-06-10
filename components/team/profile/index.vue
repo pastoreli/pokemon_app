@@ -14,7 +14,7 @@
       <v-flex xs8 text-xs-right py-3>
         <span class="white--text pok-text--h4 mx-2 cursor-pointer" @click="cancel()"><i class="fas fa-ban mr-1" />CANCEL</span>
         <span class="white--text pok-text--h4 mx-2 cursor-pointer" @click="removeTeam(editingTeam.id)"><i class="fas fa-trash-alt mr-1" />DELETE</span>
-        <span class="white--text mx-2 pok-text--h4 cursor-pointer" @click="saveTeam()"><i class="fas fa-save mr-1" />SAVE</span>
+        <span class="white--text mx-2 pok-text--h4 cursor-pointer" @click="editingTeam? editTeam() : saveTeam()"><i :class="`fas ${editingTeam? 'fa-pen' : 'fa-save'} mr-1`" />{{editingTeam? 'EDIT' : 'SAVE'}}</span>
       </v-flex>
     </v-layout>
 
@@ -140,12 +140,7 @@ export default {
         if(this.choosedPokemon.list[this.tabIndex]){
           this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
         }
-        
         this.savePokemonTeam(res, 0)
-        // this.choosedPokemon.data.forEach(async i => {
-        //   alert('hi')
-        //   await this.savePokemonTeam(res, i)
-        // })
       }).catch(error => {
         console.log('error', error)
       })
@@ -172,6 +167,24 @@ export default {
           //   this.savePokemonTeam(teamId, index+1)
           // }
         }).catch(error => console.log('error', error))
+    },
+    async editTeam() {
+      console.log(this.editingTeam)
+      await TeamAPI.editTeam(this.editingTeam.id ,{name: this.teamName})
+      .then(res => {
+        alert('cad')
+        // if(this.choosedPokemon.list[this.tabIndex]){
+        //   this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
+        // }
+        
+        // this.savePokemonTeam(res, 0)
+        
+      }).catch(error => {
+        console.log('error', error)
+      })
+
+      this.clearData()
+      this.$emit('update')
     },
     async activeEdition(team) {
       this.editingTeam = {...team}
@@ -209,6 +222,7 @@ export default {
         list: [],
         data: []
       }
+      this.editingTeam = null
     },
     deletePokemon(index) {
       this.choosedPokemon.data.splice(index, 1)

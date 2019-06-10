@@ -44,5 +44,26 @@ export default {
       console.log('error', error)
       return null
     })
-  }
+  },
+
+  editTeam: (teamId ,name) => {
+    return axios.create().put(`${route}/${teamId}`, name)
+    .then(res => res.data)
+    .catch(error => {
+      console.log('error', error.headers);
+      return null;
+    })
+  },
+  
+  editPokemonTeam: (teamId, pokemonId) => {
+    return axios.create().put(`${route}/${teamId}/pokemon/${pokemonId}`)
+    .then(res => {
+      console.log(res)
+      return res.data
+    })
+    .catch(error => {
+      console.log('error', error.headers);
+      return null;
+    })
+  },
 }
