@@ -21,6 +21,9 @@
     background-color: $third-brand-color !important;
     &--light{
       background-color: $third-brand-color-light !important;
+      &-2{
+        background-color: $third-brand-color-light-2 !important;
+      }
     }
     &--dark{
       background-color: $third-brand-color-dark !important;

@@ -21,8 +21,8 @@
     color: $third-brand-color !important;
     &--light{
       color: $third-brand-color-light !important;
-      &-2{
-        color: $third-brand-color-light-2;
+      &-3{
+        color: $third-brand-color-light-3;
       }
     }
     &--dark{
@@ -48,6 +48,13 @@
     }
     &h6{
       font-size: $text-h6 !important;
+    }
+
+    &underline{
+      text-decoration: underline !important;
+    }
+    &upper{
+      text-transform: uppercase !important;
     }
   }
 }

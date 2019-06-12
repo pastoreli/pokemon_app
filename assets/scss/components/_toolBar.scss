@@ -23,13 +23,14 @@
         .items-{
           &left{
             height: 100%;
-            width: 200px;
+            width: auto;
             .round-icon{
-              display: block;
-              width: 25px;
-              height: 25px;
+              display: inline-block;
+              width: 30px;
+              height: 30px;
               border-radius: 50%;
-
+              position: relative;
+            
               &.big-icon{
                 width: 60px;
                 height: 60px;

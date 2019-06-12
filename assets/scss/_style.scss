@@ -6,7 +6,7 @@
 
 .pok-{
   &page{
-    border-radius: $round;
+    border-radius: $round-2;
     background: #E6E6E6;
     width: 100% !important;
     height: calc(100vh - (#{$header-size} + 50px)) !important;
@@ -16,6 +16,9 @@
   &fill--{
     &height{
       height: 100%;
+      &-auto{
+        height: auto !important;
+      }
     }
     &width{
       width: 100%;
@@ -27,8 +30,19 @@
   }
 
   &round{
-    border-radius: $round;
+    border-radius: $round !important;
+    &-2{
+      border-radius: $round-2 !important;
+    }
+    &-3{
+      
+      border-radius: $round-3 !important;
+    }
   }
+}
+
+.pok-border{
+  border-bottom: 2px solid rgba(#fff, .2);
 }
 
 .overflow-{
@@ -39,20 +53,61 @@
   &auto{
     overflow: auto !important;
   }
+  &normal{
+    overflow: unset !important;
+    height: auto;
+  }
 }
 
-.text-center{
-  text-align: center !important;
+.text-{
+  &center{
+    text-align: center !important;
+    &-vertical{
+      vertical-align: middle;
+      &--force{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &right{
+    text-align: right !important;
+  }
+  &left{
+    text-align: left !important;
+  }
 }
 
-.bulba{
-  background: green;
+.cursor-{
+  &pointer{
+    cursor: pointer;
+  }
 }
 
-.sqk{
-  background: blue;
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #E6E6E6 !important;
+  opacity: 1; /* Firefox */
 }
 
-.char{
-  background: red;
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #E6E6E6 !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #E6E6E6 !important;
+}
+
+[role=list] {
+  padding: 0px !important;
+  background: $third-brand-color-light !important;
+  color: white !important;
+  [role=listitem] {
+    .v-list__tile{
+      padding: 0px !important;
+      .v-list__tile__content{
+        padding: 0 10px;
+      }
+    }
+  }
 }

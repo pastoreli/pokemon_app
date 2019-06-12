@@ -1,0 +1,35 @@
+.pok-team{
+  .pok-team-container{
+    height: calc(100% - 50px);
+  }
+
+  .pok-team-tab{
+    height: 100px;
+    .pok-team-tab-item{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      .pok-tab-close{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
+
+      img{
+        position: relative;
+        top: 10px;
+      }
+      p{
+        position: relative;
+        top: 0px;
+      }
+    }
+  }
+
+  .pok-team-content{
+    height: calc(100% - 80px) !important;
+  }
+
+}

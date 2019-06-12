@@ -1,11 +1,11 @@
 import axios from './axios';
-const route = '/ability';
+const route = '/nature';
 
 export default {
-  getAbilityById: id => axios.create().get(`${route}/${id}`)
+  getAllNatures: (page = 0) => axios.create().get(`${route}?page=${page}`)
   .then(res => res.data)
   .catch(error => {
     console.log('error', error);
-    return {}
+    return [];
   })
 }
