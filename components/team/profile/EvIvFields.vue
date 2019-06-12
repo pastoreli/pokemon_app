@@ -16,7 +16,7 @@
         color="white"
         track-color="white"
         thumb-color="pok-primary-brand"
-        max="250"
+        max="252"
         always-dirty
         :style="`margin-top: ${hasLabel? '30' : '5'}px`"
         @change="emitChanges()" />
