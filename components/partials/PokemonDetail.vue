@@ -116,17 +116,43 @@
                 </v-flex>
               </v-layout>
             </v-flex>
-
-
           </v-layout>
         </v-flex>
       </v-layout>
+      <div class="pok-third-brand--light pok-round-2 py-4 px-5 mt-4 overflow-hidden " style="height: 500px">
+        <v-layout>
+        <v-flex xs12>
+          <span class="white--text pok-text--h2">Moves</span>
+        </v-flex>
+        </v-layout>
+        <div class="pa-0 mt-3 pok-fill--all overflow-auto">
+          <v-layout row wrap>
+            <v-flex  xs4 v-for="move in pokemon.moves" :key="move.id">
+              <v-tooltip top max-width="250px" content-class="text-center">
+                <template v-slot:activator="{ on }">
+                  <span v-on="on" @mouseover="callMoveDetails(move.id)" class="white--text pok-text--h4">{{move.name}}</span>
+                </template>
+                <span v-if="showMoveDetails">{{showMoveDetails.description}}</span>
+              </v-tooltip>
+              <div class="pok-chip-container mb-4 mt-2">
+                <div :class="['pok-chip', 'ma-1', `pok-${move.type}`]">
+                  <span class="white--text pok-text--h6 text-center-vertical">{{move.type}}</span>
+                </div>
+                <div :class="['pok-chip', 'ma-1', `pok-${move.damage_category}`]">
+                  <span class="white--text pok-text--h6 text-center-vertical">{{move.damage_category}}</span>
+                </div>
+              </div>
+            </v-flex>
+          </v-layout>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 
 import abilityAPI from '@/API/ability';
+import moveAPI from '@/API/move';
 
 export default {
   props: {
@@ -138,12 +164,17 @@ export default {
   data (){
     return {
       statsPercent: 200,
-      showAbilityDetails: null
+      showAbilityDetails: null,
+      showMoveDetails: null
     }
   },
   methods: {
     async callAbilityDetails(id) {
       this.showAbilityDetails = await abilityAPI.getAbilityById(id);
+    },
+
+    async callMoveDetails(id) {
+      this.showMoveDetails = await moveAPI.getMoveById(id);
     }
   }
 }
