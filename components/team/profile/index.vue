@@ -13,7 +13,7 @@
       </v-flex>
       <v-flex xs8 text-xs-right py-3>
         <span class="white--text pok-text--h4 mx-2 cursor-pointer" @click="cancel()"><i class="fas fa-ban mr-1" />CANCEL</span>
-        <span class="white--text pok-text--h4 mx-2 cursor-pointer" @click="removeTeam(editingTeam.id)"><i class="fas fa-trash-alt mr-1" />DELETE</span>
+        <span v-if="editingTeam" class="white--text pok-text--h4 mx-2 cursor-pointer" @click="removeTeam(editingTeam.id)"><i class="fas fa-trash-alt mr-1" />DELETE</span>
         <span class="white--text mx-2 pok-text--h4 cursor-pointer" @click="editingTeam? editTeam() : saveTeam()"><i :class="`fas ${editingTeam? 'fa-pen' : 'fa-save'} mr-1`" />{{editingTeam? 'EDIT' : 'SAVE'}}</span>
       </v-flex>
     </v-layout>
@@ -90,6 +90,9 @@ export default {
       // this.choosedPokemon.list[this.tabIndex] = await PokemonAPI.getPokemonById(id);
     },
     async searchPokemonByTeam(pokemonList, index = 0) {
+       if (pokemonList[index] === undefined) {
+        return [];
+      }
       return await PokemonAPI.getPokemonById(pokemonList[index].pokemon_id)
       .then(async res => {
         let array = [res];
@@ -109,7 +112,6 @@ export default {
     async getNature(page = 0) {
       await NatureAPI.getAllNatures(page).then(res => {
         this.naturesList.push(...res.content)
-        console.log('nature', res)
         if(res.next) this.getNature(page+1);
       }).catch(error => console.log(error))
     },
@@ -155,7 +157,6 @@ export default {
       .then(res => {
         this.clearData()
         this.$emit('update')
-        console.log('apagou', res)
       }).catch(error => console.log('error', error))
     },
     savePokemonTeam(teamId, index) {
@@ -169,10 +170,8 @@ export default {
         }).catch(error => console.log('error', error))
     },
     async editTeam() {
-      console.log(this.editingTeam)
       await TeamAPI.editTeam(this.editingTeam.id ,{name: this.teamName})
       .then(res => {
-        alert('cad')
         // if(this.choosedPokemon.list[this.tabIndex]){
         //   this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
         // }
@@ -190,7 +189,6 @@ export default {
       this.editingTeam = {...team}
       this.choosedPokemon.list = []
       this.$set(this.choosedPokemon, 'list', await this.searchPokemonByTeam(team.pokemon))
-      console.log('lista', this.choosedPokemon.list)
       this.emitData()
 
       // for (const pok of team.pokemon) {
@@ -225,8 +223,10 @@ export default {
       this.editingTeam = null
     },
     deletePokemon(index) {
-      this.choosedPokemon.data.splice(index, 1)
+      const pokemon = this.choosedPokemon.data.splice(index, 1)
       this.choosedPokemon.list.splice(index, 1)
+
+      TeamAPI.deletePokemonTeam(this.editingTeam.id, pokemon[0].id)
 
       this.tabIndex = this.choosedPokemon.list.length
       this.emitData()

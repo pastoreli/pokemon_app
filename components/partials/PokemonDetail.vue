@@ -1,6 +1,6 @@
 <template>
   <div class="pok-third-brand pok-fill--all pa-4">
-    <div v-if="pokemon">
+    <div v-if="pokemon" class="pok-fill--all">
       <v-layout row wrap class="pok-third-brand--light pok-round-2 py-4">
         <v-flex xs4 class="text-center">
           <img :src="pokemon.sprite" class="pok-img--sz2" />
@@ -119,18 +119,18 @@
           </v-layout>
         </v-flex>
       </v-layout>
-      <div class="pok-third-brand--light pok-round-2 py-4 px-5 mt-4 overflow-hidden " style="height: 500px">
+      <div class="pok-third-brand--light pok-round-2 py-4 px-5 mt-4"  style="height: calc(100% - 290px)">
         <v-layout>
         <v-flex xs12>
           <span class="white--text pok-text--h2">Moves</span>
         </v-flex>
         </v-layout>
-        <div class="pa-0 mt-3 pok-fill--all overflow-auto">
+        <div class="pa-0 mt-3 overflow-auto" style="height: calc(100% - 40px)">
           <v-layout row wrap>
             <v-flex  xs4 v-for="move in pokemon.moves" :key="move.id">
               <v-tooltip top max-width="250px" content-class="text-center">
                 <template v-slot:activator="{ on }">
-                  <span v-on="on" @mouseover="callMoveDetails(move.id)" class="white--text pok-text--h4">{{move.name}}</span>
+                  <span v-on="on" @mouseover="callMoveDetails(move.id)" class="white--text pok-text--h4 text-center-vertical">{{move.name}}</span>
                 </template>
                 <span v-if="showMoveDetails">{{showMoveDetails.description}}</span>
               </v-tooltip>
