@@ -66,4 +66,15 @@ export default {
       return null;
     })
   },
+
+  deletePokemonTeam: (teamId, pokemonId) => {
+    return axios.create().delete(`${route}/${teamId}/pokemon/${pokemonId}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log('error', error)
+        return error;
+      })
+  }
 }
