@@ -192,10 +192,10 @@
                 <v-flex xs8>
                   <v-layout row wrap pa-0>
                     <v-flex xs4 md2 py-2>
-                      <span class="white--text pok-text--h4">{{pokemon.stats.hp}}</span>
+                      <span class="white--text pok-text--h4">{{Math.floor((((2 * pokemon.stats.hp + formData.ivs.hp + (formData.evs.hp / 4)) * 100) / 100) + 100 + 10)}}</span>
                     </v-flex>
                     <v-flex xs8 md10 pr-4 py-0>
-                      <v-progress-linear :value="((pokemon.stats.hp/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                      <v-progress-linear :value="((Math.floor((((2 * pokemon.stats.hp + formData.ivs.hp + (formData.evs.hp / 4)) * 100) / 100) + 100 + 10)/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -218,10 +218,10 @@
                 <v-flex xs8>
                   <v-layout row wrap pa-0>
                     <v-flex xs4 md2 py-2>
-                      <span class="white--text pok-text--h4">{{pokemon.stats.atk}}</span>
+                      <span class="white--text pok-text--h4">{{Math.floor((((2 * pokemon.stats.atk + formData.ivs.atk + (formData.evs.atk / 4)) * 100) / 100) +  5)}}</span>
                     </v-flex>
                     <v-flex xs8 md10 pr-4 py-0>
-                      <v-progress-linear :value="((pokemon.stats.atk/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                      <v-progress-linear :value="((Math.floor((((2 * pokemon.stats.atk + formData.ivs.atk + (formData.evs.atk / 4)) * 100) / 100) +  5)/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -243,10 +243,10 @@
                 <v-flex xs8>
                   <v-layout row wrap pa-0>
                     <v-flex xs4 md2 py-2>
-                      <span class="white--text pok-text--h4">{{pokemon.stats.def}}</span>
+                      <span class="white--text pok-text--h4">{{Math.floor((((2 * pokemon.stats.def + formData.ivs.def + (formData.evs.def / 4)) * 100) / 100) +  5)}}</span>
                     </v-flex>
                     <v-flex xs8 md10 pr-4 py-0>
-                      <v-progress-linear :value="((pokemon.stats.def/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                      <v-progress-linear :value="((Math.floor((((2 * pokemon.stats.def + formData.ivs.def + (formData.evs.def / 4)) * 100) / 100) +  5)/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -268,10 +268,10 @@
                 <v-flex xs8>
                   <v-layout row wrap pa-0>
                     <v-flex xs4 md2 py-2>
-                      <span class="white--text pok-text--h4">{{pokemon.stats.sp_atk}}</span>
+                      <span class="white--text pok-text--h4">{{Math.floor((((2 * pokemon.stats.sp_atk + formData.ivs.sp_atk + (formData.evs.sp_atk / 4)) * 100) / 100) +  5)}}</span>
                     </v-flex>
                     <v-flex xs8 md10 pr-4 py-0>
-                      <v-progress-linear :value="((pokemon.stats.sp_atk/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                      <v-progress-linear :value="((Math.floor((((2 * pokemon.stats.sp_atk + formData.ivs.sp_atk + (formData.evs.sp_atk / 4)) * 100) / 100) +  5)/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -293,10 +293,10 @@
                 <v-flex xs8>
                   <v-layout row wrap pa-0>
                     <v-flex xs4 md2 py-2>
-                      <span class="white--text pok-text--h4">{{pokemon.stats.sp_def}}</span>
+                      <span class="white--text pok-text--h4">{{Math.floor((((2 * pokemon.stats.sp_def + formData.ivs.sp_def + (formData.evs.sp_def / 4)) * 100) / 100) +  5)}}</span>
                     </v-flex>
                     <v-flex xs8 md10 pr-4 py-0>
-                      <v-progress-linear :value="((pokemon.stats.sp_def/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                      <v-progress-linear :value="((Math.floor((((2 * pokemon.stats.sp_def + formData.ivs.sp_def + (formData.evs.sp_def / 4)) * 100) / 100) +  5)/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -318,10 +318,10 @@
                 <v-flex xs8>
                   <v-layout row wrap pa-0>
                     <v-flex xs4 md2 py-2>
-                      <span class="white--text pok-text--h4">{{pokemon.stats.speed}}</span>
+                      <span class="white--text pok-text--h4">{{Math.floor((((2 * pokemon.stats.speed + formData.ivs.speed + (formData.evs.speed / 4)) * 100) / 100) +  5)}}</span>
                     </v-flex>
                     <v-flex xs8 md10 pr-4 py-0>
-                      <v-progress-linear :value="((pokemon.stats.speed/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
+                      <v-progress-linear :value="((Math.floor((((2 * pokemon.stats.speed + formData.ivs.speed + (formData.evs.speed / 4)) * 100) / 100) +  5)/statsPercent)*100)" height="12" background-color="#CACACA" color="pok-primary-brand" class="pok-linear-progress" />
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -375,7 +375,7 @@ export default {
   },
   data () {
     return {
-      statsPercent: 200,
+      statsPercent: 600,
       moveList: this.pokemon? this.pokemon.moves : [],
       formData: {
         pokemon_id: this.pokemon? this.pokemon.id : null,
@@ -425,8 +425,8 @@ export default {
       })
     },
     listenStatus(data, key) {
-      this.formData.ivs[key] = data.IV
-      this.formData.evs[key] = data.EV
+      this.formData.ivs[key] =  data.IV != "" ? parseInt(data.IV) : 0
+      this.formData.evs[key] = data.EV != "" ? parseInt(data.EV) : 0
     },
     getFormData() {
       return this.formData

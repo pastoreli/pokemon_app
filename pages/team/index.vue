@@ -72,15 +72,19 @@ export default {
     },
 
     async editTeam(team) {
+      await this.updateList()
+      
       this.teamListAux = this.teamList.filter(i => i.id !== team.id)
       this.selectedTeam = {...team}
-      console.log('pok team', team)
       this.selectedTeam.pokemon = await this.searchPokemonTeam(this.selectedTeam.id, this.selectedTeam.pokemon, 0)
       // console.log(this.selectedTeam)
       this.$refs.teamProfile.activeEdition(this.selectedTeam)
 
     },
     async searchPokemonTeam(teamId, pokemonList, index) {
+      if (pokemonList[index] === undefined) {
+        return [];
+      }
       return await TeamAPI.getPokemonByTeam(teamId, pokemonList[index].id)
       .then(async res => {
         let array = [res];
@@ -91,11 +95,13 @@ export default {
 
       }).catch(error => console.log('error', error));
     },
-    async updateList(teamId) {
+    async updateList() {
       this.teamList = []
+      this.teamListAux = []
       this.teamData = null
       await this.getTeams()
       this.teamListAux = this.teamList
+      this.$forceUpdate()
     }
 
   },

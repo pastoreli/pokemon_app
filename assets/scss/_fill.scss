@@ -95,4 +95,16 @@
   &Fighting{
     background-color: $type-fighting-color;
   }
+  &Physical{
+    background-color: $move-physical-color;
+  }
+  &Status{
+    background-color: $move-status-color;
+  }
+  &Special{
+    background-color: $move-special-color;
+  }
+  &Move{
+    background-color: $primary-brand-color; 
+  }
 } 

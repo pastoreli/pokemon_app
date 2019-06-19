@@ -55,8 +55,8 @@ export default {
     })
   },
   
-  editPokemonTeam: (teamId, pokemonId) => {
-    return axios.create().put(`${route}/${teamId}/pokemon/${pokemonId}`)
+  editPokemonTeam: (teamId, pokemon) => {
+    return axios.create().put(`${route}/${teamId}/pokemon/${pokemon.id}`, pokemon)
     .then(res => {
       console.log(res)
       return res.data
@@ -66,4 +66,15 @@ export default {
       return null;
     })
   },
+
+  deletePokemonTeam: (teamId, pokemonId) => {
+    return axios.create().delete(`${route}/${teamId}/pokemon/${pokemonId}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log('error', error)
+        return error;
+      })
+  }
 }
