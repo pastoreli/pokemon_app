@@ -72,6 +72,8 @@ export default {
     },
 
     async editTeam(team) {
+      await this.updateList()
+      
       this.teamListAux = this.teamList.filter(i => i.id !== team.id)
       this.selectedTeam = {...team}
       this.selectedTeam.pokemon = await this.searchPokemonTeam(this.selectedTeam.id, this.selectedTeam.pokemon, 0)
@@ -93,11 +95,13 @@ export default {
 
       }).catch(error => console.log('error', error));
     },
-    async updateList(teamId) {
+    async updateList() {
       this.teamList = []
+      this.teamListAux = []
       this.teamData = null
       await this.getTeams()
       this.teamListAux = this.teamList
+      this.$forceUpdate()
     }
 
   },

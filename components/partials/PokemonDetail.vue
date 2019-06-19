@@ -119,11 +119,7 @@
           </v-layout>
         </v-flex>
       </v-layout>
-<<<<<<< HEAD
-      <div class="pok-third-brand--light pok-round-2 py-4 px-5 mt-4 overflow-auto" style="height: calc(100% - 290px)">
-=======
       <div class="pok-third-brand--light pok-round-2 py-4 px-5 mt-4"  style="height: calc(100% - 290px)">
->>>>>>> 20b8538459d8dc0d888d3343dbf7fb149e680758
         <v-layout>
         <v-flex xs12>
           <span class="white--text pok-text--h2">Moves</span>

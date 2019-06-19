@@ -128,6 +128,8 @@ export default {
         setTimeout(() => this.$refs.pokemonForm.reload(), 100)
       }
 
+      console.log('dataaaa', this.choosedPokemon.data)
+
     },
     emitData() {
       const info = {
@@ -142,7 +144,7 @@ export default {
         if(this.choosedPokemon.list[this.tabIndex]){
           this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
         }
-        this.savePokemonTeam(res, 0)
+        this.savePokemonTeam(res, this.choosedPokemon.data)
       }).catch(error => {
         console.log('error', error)
       })
@@ -159,8 +161,8 @@ export default {
         this.$emit('update')
       }).catch(error => console.log('error', error))
     },
-    savePokemonTeam(teamId, index) {
-      TeamAPI.savePokemonTeam(teamId, this.choosedPokemon.data)
+    savePokemonTeam(teamId, pokemonList) {
+      TeamAPI.savePokemonTeam(teamId, pokemonList)
         .then(res => {
           this.clearData()
           this.$emit('update')
@@ -170,9 +172,20 @@ export default {
         }).catch(error => console.log('error', error))
     },
     async editTeam() {
+
+      if(this.choosedPokemon.list[this.tabIndex]){
+        this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
+      }
+
       await TeamAPI.editTeam(this.editingTeam.id ,{name: this.teamName})
       .then(res => {
-        this.editPokemon(this.editingTeam.id, this.choosedPokemon.data)
+        console.log('pokes: ', this.choosedPokemon.data)
+        const pokExist = this.choosedPokemon.data.filter(pok => pok.registered)
+        const pokNew = this.choosedPokemon.data.filter(pok => !pok.registered)
+        console.log('pokes new: ', pokNew)
+        this.editPokemon(this.editingTeam.id, pokExist)
+        this.savePokemonTeam(this.editingTeam.id, pokNew)
+
         // if(this.choosedPokemon.list[this.tabIndex]){
         //   this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
         // }
@@ -188,6 +201,7 @@ export default {
     },
     async activeEdition(team) {
       this.editingTeam = {...team}
+      this.teamName = this.editingTeam.name
       this.choosedPokemon.list = []
       this.$set(this.choosedPokemon, 'list', await this.searchPokemonByTeam(team.pokemon))
       this.emitData()
@@ -210,7 +224,7 @@ export default {
 
         return pok
       })
-      this.choosedPokemon.data = team.pokemon
+      // this.choosedPokemon.data = team.pokemon
 
       if(this.choosedPokemon.list[this.tabIndex]) {
         setTimeout(() => this.$refs.pokemonForm.reload(), 100)
@@ -218,35 +232,36 @@ export default {
       console.log(this.choosedPokemon.data)
     },
     async editPokemon(teamId, pokemonList, index = 0) {
-      if(pokemonList[index]) {
-        if(pokemonList[index].registered) {
-          await TeamAPI.editPokemonTeam(teamId, pokemonList[index])
-          .then(res => {
-            if(pokemonList[index+1]) this.editPokemon(teamId, pokemonList, index+1)
-          }).catch(error => console.log('error', error))
-        }else{
-          alert('hi')
-          await TeamAPI.savePokemonTeam(teamId, pokemonList[index])
-          .then(res => {
-            if(pokemonList[index+1]) this.editPokemon(teamId, pokemonList, index+1)
-          }).catch(error => console.log('error', error))
-        }
+      console.log('innn', pokemonList)
+      if(pokemonList[index]) { 
+        await TeamAPI.editPokemonTeam(teamId, pokemonList[index])
+        .then(res => {
+          console.log('edit ', pokemonList[index])
+          if(pokemonList[index+1]) this.editPokemon(teamId, pokemonList, index+1)
+        }).catch(error => console.log('error', error))
       }
     },
     clearData() {
+      this.teamName = null
       this. choosedPokemon = {
         list: [],
         data: []
       }
       this.editingTeam = null
+      this.emitData()
+      this.$forceUpdate()
     },
     deletePokemon(index) {
-      const pokemon = this.choosedPokemon.data.splice(index, 1)
+
+      if( this.choosedPokemon.data[index].registered ) {
+        TeamAPI.deletePokemonTeam(this.editingTeam.id, this.choosedPokemon.data[index].id)
+      }
+
+      this.tabIndex = this.choosedPokemon.list.length-1
+
+      this.choosedPokemon.data.splice(index, 1)
       this.choosedPokemon.list.splice(index, 1)
 
-      TeamAPI.deletePokemonTeam(this.editingTeam.id, pokemon[0].id)
-
-      this.tabIndex = this.choosedPokemon.list.length
       this.emitData()
     } 
   },
