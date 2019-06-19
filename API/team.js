@@ -55,8 +55,8 @@ export default {
     })
   },
   
-  editPokemonTeam: (teamId, pokemonId) => {
-    return axios.create().put(`${route}/${teamId}/pokemon/${pokemonId}`)
+  editPokemonTeam: (teamId, pokemon) => {
+    return axios.create().put(`${route}/${teamId}/pokemon/${pokemon.id}`, pokemon)
     .then(res => {
       console.log(res)
       return res.data

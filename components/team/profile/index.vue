@@ -172,7 +172,7 @@ export default {
       console.log(this.editingTeam)
       await TeamAPI.editTeam(this.editingTeam.id ,{name: this.teamName})
       .then(res => {
-        alert('cad')
+        this.editPokemon(this.editingTeam.id, this.choosedPokemon.data)
         // if(this.choosedPokemon.list[this.tabIndex]){
         //   this.choosedPokemon.data[this.tabIndex] = this.$refs.pokemonForm.getFormData()
         // }
@@ -193,11 +193,11 @@ export default {
       console.log('lista', this.choosedPokemon.list)
       this.emitData()
 
-      // for (const pok of team.pokemon) {
-      //   console.log('pok', pok)
-      //   await this.searchPokemon(pok.pokemon_id)
-      //   this.tabIndex++;
-      // }
+      for (const pok of team.pokemon) {
+        console.log('pok', pok)
+        await this.searchPokemon(pok.pokemon_id)
+        this.tabIndex++;
+      }
       
       this.tabIndex = 0;
       this.choosedPokemon.data = team.pokemon.map(pok => {
@@ -206,6 +206,7 @@ export default {
         pok['item_id'] = pok.item.id
         pok['ability_id'] = pok.ability.id
         pok.moves = pok.moves.map(move => move.id)
+        pok.registered = true
         
 
         return pok
@@ -216,6 +217,22 @@ export default {
         setTimeout(() => this.$refs.pokemonForm.reload(), 100)
       }
       console.log(this.choosedPokemon.data)
+    },
+    async editPokemon(teamId, pokemonList, index = 0) {
+      if(pokemonList[index]) {
+        if(pokemonList[index].registered) {
+          await TeamAPI.editPokemonTeam(teamId, pokemonList[index])
+          .then(res => {
+            if(pokemonList[index+1]) this.editPokemon(teamId, pokemonList, index+1)
+          }).catch(error => console.log('error', error))
+        }else{
+          alert('hi')
+          await TeamAPI.savePokemonTeam(teamId, pokemonList[index])
+          .then(res => {
+            if(pokemonList[index+1]) this.editPokemon(teamId, pokemonList, index+1)
+          }).catch(error => console.log('error', error))
+        }
+      }
     },
     clearData() {
       this. choosedPokemon = {
