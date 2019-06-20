@@ -36,6 +36,7 @@ export default {
     },
     logout() {
       this.$store.dispatch('removeToken')
+      this.$router.push('/');
     }
   },
   data () {
