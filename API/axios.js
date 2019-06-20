@@ -1,7 +1,7 @@
 import axios from 'axios';
 // const route = 'http://localhost:8080';
 // const route = 'http://localhost:8000';
-const route = 'https://poke-tonhao.herokuapp.com';
+const route = 'https://poke-api-fatec.herokuapp.com';
 
 const checkIsExistToken = () => {
   const accessToken = localStorage.getItem('accessToken')
