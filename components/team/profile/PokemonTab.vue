@@ -28,7 +28,7 @@
       :class="['pok-team-tab-item cursor-pointer', activeTab === pokemonList.length? 'pok-third-brand--light' : '']"
       @click="changeTab(pokemonList.length)">
       <div class="text-center-vertical--force">
-        <span class="white--text"><i class="fas fa-plus" /> ADD TEAM</span>
+        <span class="white--text"><i class="fas fa-plus" /> ADD POKEMON</span>
       </div>
     </v-flex>
   </v-layout>

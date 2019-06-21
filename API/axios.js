@@ -5,7 +5,6 @@ const route = 'http://localhost:8080';
 
 const checkIsExistToken = () => {
   const accessToken = localStorage.getItem('accessToken')
-  // console.log(accessToken)
   return accessToken || ''
 }
 

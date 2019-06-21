@@ -58,7 +58,7 @@ export default {
     async signIn( data ) {
 
       await AuthAPI.signIn( data ).then(res => {
-        console.log('ress', res)
+        // console.log('ress', res)
 
         this.$store.dispatch('setToken', res)
         localStorage.setItem('accessToken', res)
@@ -71,7 +71,7 @@ export default {
     },
     async signUp( data ) {
       await UserAPI.createUser( data ).then(res => {
-        console.log('ress', res)
+        // console.log('ress', res)
 
         this.$store.dispatch('auth/setToken', res)
         localStorage.setItem('accessToken', res)
